@@ -198,9 +198,9 @@ nav .menu {
 
 /* About Section */
 .about-section {
-  padding: 5rem 2rem;
+  padding: 8.5rem 2rem;
   background: #fff;
-  margin-top: 80px; /* offset for fixed header */
+  /* margin-top: 80px; offset for fixed header */
 }
 
 .about-container {
@@ -264,9 +264,9 @@ nav .menu {
 /* Skills Section */
 
 #skills {
-  padding: 5rem 2rem;
+  padding: 8.5rem 2rem;
   background: #ffffff;
-  margin-top: 80px;
+  /* margin-top: 80px; */
 }
 
 .skills-grid {
@@ -299,9 +299,9 @@ nav .menu {
 
 /* Projects Section */
 #projects {
-  padding: 5rem 2rem;
+  padding: 8.5rem 2rem;
   background: #ffffff;
-  margin-top: 70px;
+  /* margin-top: 70px; */
 }
 
 .projects-grid {
