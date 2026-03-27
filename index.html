@@ -9,10 +9,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
   </head>
   <body>
     <header>
@@ -33,86 +35,115 @@
       <div class="overlay">
         <h1>HI!</h1>
         <h2>I am <span class="highlight">Akash Agarwal</span></h2>
-        <h3>Computer Science Student</h3>
+        <h3><span id="typed"></span></h3>
         <a href="#projects" class="btn">Visit My Works</a>
+      </div>
+    </section>
+
+    <!-- Dynamic Quote Section -->
+    <section id="quote-section" class="quote-section">
+      <div class="quote-container">
+        <blockquote class="quote-text" id="quoteText">
+          "The only way to do great work is to love what you do." - Steve Jobs
+        </blockquote>
+        <p class="quote-author" id="quoteAuthor"></p>
       </div>
     </section>
 
     <section id="about" class="about-section">
       <div class="about-container">
-        <div class="about-image">
-          <img src="assets/profile.jpg" alt="About Me Image" />
-        </div>
         <div class="about-content">
-          <p class="section-subtitle">Who Am I ?</p>
-          <h2 class="section-title">About Me</h2>
-          <p class="about-text">
-            Hi, I'm Akash Agarwal, a B.Tech Student, a passionate developer and
-            tech enthusiast based in India. With a strong foundation in
-            development and a love for clean UI/UX, I enjoy building modern,
-            user-friendly applications that solve real-world problems.<br /><br />
-            I'm currently focused on enhancing my skills through projects,
-            coding challenges, and collaborative learning. From robotics and AI
-            tools to software and web development, I love turning ideas into
-            functional, engaging digital experiences.
+          <h2 class="about-headline">BUILD WHAT MATTERS.</h2>
+          <p class="about-intro">
+            Transform your ideas from concept to deployment. Full-stack development, AI/ML solutions, and scalable systems — built with precision and shipped with confidence.
           </p>
-          <a href="https://drive.google.com/file/d/1TmlrUIpJRGqrvzfIMtwRHeSJ3BmEds6I/view?usp=sharing" class="btn-outline">Download CV</a>
+          <p class="about-text">
+            I'm Akash Agarwal, a Computer Science student (8.71 CGPA) and ML Intern specializing in end-to-end solutions. I build production-ready applications spanning ML pipelines, full-stack web apps, and cloud infrastructure. Currently open to internships in Software Engineering, AI/ML, and Full-Stack Development.
+          </p>
+          <div class="about-buttons">
+            <a href="#projects" class="btn-primary">View My Work</a>
+            <a href="https://drive.google.com/file/d/1F3tHzvdQ9hCQ12oJfWFYHiLLqSyjlIPL/view?usp=sharing" class="btn-secondary">Download Resume</a>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="assets/profile.png" alt="Akash Agarwal" />
         </div>
       </div>
     </section>
 
     <section id="skills">
       <div class="container">
-        <p class="section-subtitle">Thing's I can Tackle</p>
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-item">
-            <h3>HTML/CSS</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="30%" style="width: 0%"></div>
+        <h2 class="section-title skills-title">Skills that fuel my passion</h2>
+        
+        <div class="skill-cards-grid">
+          <!-- Languages & Databases -->
+          <div class="skill-card">
+            <div class="skill-icons-top">
+              <i class="devicon-python-plain"></i>
+              <i class="devicon-cplusplus-plain"></i>
+              <i class="devicon-javascript-plain"></i>
+              <i class="devicon-java-plain"></i>
+              <i class="devicon-c-plain"></i>
+              <i class="devicon-mysql-plain"></i>
             </div>
+            <h3 class="skill-card-title">Languages & Databases</h3>
+            <p class="skill-card-description">Versatile programmer across Python, C++, Java, and JavaScript with strong competitive programming background and database design expertise</p>
           </div>
-          <div class="skill-item">
-            <h3>JavaScript</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="10%" style="width: 0%"></div>
+
+          <!-- Web Development -->
+          <div class="skill-card">
+            <div class="skill-icons-top">
+              <i class="devicon-react-plain"></i>
+              <i class="devicon-nodejs-plain"></i>
+              <i class="devicon-express-original"></i>
+              <i class="devicon-nextjs-original"></i>
+              <i class="devicon-spring-plain"></i>
+              <i class="devicon-fastapi-plain"></i>
             </div>
+            <h3 class="skill-card-title">Web Development</h3>
+            <p class="skill-card-description">Full-stack expertise building modern web applications with React frontends and scalable backend services using Node.js, Express, and FastAPI</p>
           </div>
-          <div class="skill-item">
-            <h3>Python</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="30%" style="width: 0%"></div>
+
+          <!-- Machine Learning & AI -->
+          <div class="skill-card">
+            <div class="skill-icons-top">
+              <i class="devicon-pytorch-plain"></i>
+              <i class="devicon-tensorflow-original"></i>
+              <i class="devicon-python-plain"></i>
+              <i class="fas fa-brain"></i>
+              <i class="fas fa-chart-line"></i>
+              <i class="fas fa-robot"></i>
             </div>
+            <h3 class="skill-card-title">Machine Learning & AI</h3>
+            <p class="skill-card-description">Deep expertise in ML workflows with TensorFlow and PyTorch, from model development to deployment with strong data science fundamentals</p>
           </div>
-          <div class="skill-item">
-            <h3>SQL</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="20%" style="width: 0%"></div>
+
+          <!-- DevOps & Cloud -->
+          <div class="skill-card">
+            <div class="skill-icons-top">
+              <i class="devicon-docker-plain"></i>
+              <i class="devicon-git-plain"></i>
+              <i class="devicon-amazonwebservices-original"></i>
+              <i class="devicon-github-original"></i>
+              <i class="devicon-vscode-plain"></i>
+              <i class="fas fa-server"></i>
             </div>
+            <h3 class="skill-card-title">DevOps & Cloud</h3>
+            <p class="skill-card-description">Proficient in containerization, version control, cloud deployment, and development environments for efficient CI/CD pipelines</p>
           </div>
-          <div class="skill-item">
-            <h3>Git/GitHub</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="90%" style="width: 0%"></div>
+
+          <!-- Problem Solving -->
+          <div class="skill-card">
+            <div class="skill-icons-top">
+              <i class="fas fa-code"></i>
+              <i class="fas fa-cube"></i>
+              <i class="fas fa-flask-vial"></i>
+              <i class="fas fa-bug"></i>
+              <i class="fas fa-rocket"></i>
+              <i class="fas fa-wand-magic-sparkles"></i>
             </div>
-          </div>
-          <div class="skill-item">
-            <h3>Linux</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="20%" style="width: 0%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <h3>Machine Learning</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="5%" style="width: 0%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <h3>C++</h3>
-            <div class="progress-bar">
-              <div class="progress" data-value="10%" style="width: 0%"></div>
-            </div>
+            <h3 class="skill-card-title">Core Competencies</h3>
+            <p class="skill-card-description">Complete development lifecycle expertise from problem analysis and system design to testing, deployment, and continuous optimization</p>
           </div>
         </div>
       </div>
@@ -123,43 +154,64 @@
         <p class="section-subtitle">Here are my works!</p>
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
-          <div class="project-card">
+          <div class="project-card" data-image-keywords="AI,finance,analysis">
             <a
-              href="https://github.com/kauntiaakash2/AnimatedVideoGenerator"
-              target="_self"
+              href="https://github.com/kauntiaakash2/FinVerifyAI"
+              target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="assets/project2.png" alt="Project 2" />
-              <h3>Animated AI Video Generator</h3>
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%236a4bff' width='800' height='600'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELoading...%3C/text%3E%3C/svg%3E" alt="FinVerify AI" class="project-img" />
+              <h3>FinVerify AI</h3>
               <p>
-                Real-time video generation with modern design and seamless
-                transitions.
+                AI-powered trust gap analyzer that audits financial claims
+                for accuracy, bias, and missing context - built for consumer
+                protection.
               </p>
+              <div class="tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">AI/ML</span>
+                <span class="tag">NLP</span>
+              </div>
             </a>
           </div>
-          <div class="project-card">
+          <div class="project-card" data-image-keywords="school,schedule,automation">
             <a
-              href="https://github.com/kauntiaakash2/agarwalakash"
-              target="_self"
+              href="https://github.com/kauntiaakash2/SmartClassroom_TimeTable"
+              target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="assets/project3.png" alt="Project 3" />
-              <h3>Portfolio Website</h3>
-              <p>Glassmorphic design with smooth transitions and modern UI.</p>
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%234ecdc4' width='800' height='600'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELoading...%3C/text%3E%3C/svg%3E" alt="SmartClassroom Timetable" class="project-img" />
+              <h3>SmartClassroom Timetable</h3>
+              <p>
+                Automated smart timetable generator built for SIH -
+                conflict-free scheduling for classrooms, faculty, and
+                resources at scale.
+              </p>
+              <div class="tech-tags">
+                <span class="tag">SIH</span>
+                <span class="tag">Scheduling</span>
+                <span class="tag">Full-Stack</span>
+              </div>
             </a>
           </div>
-          <div class="project-card">
+          <div class="project-card" data-image-keywords="video,AI,transcript">
             <a
               href="https://github.com/kauntiaakash2/youtubeSummarizer"
-              target="_self"
+              target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="assets/project4.png" alt="Project 4" />
-              <h3>YouTube Video Summarizer</h3>
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%23ffa502' width='800' height='600'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3ELoading...%3C/text%3E%3C/svg%3E" alt="YouTube Summarizer" class="project-img" />
+              <h3>YouTube Summarizer</h3>
               <p>
-                Summarizes YouTube videos into quick, easy-to-read text using
-                NLP.
+                Fetches video transcripts and distills them into clean,
+                readable summaries using NLP - no more 30-minute videos
+                for a 3-minute insight.
               </p>
+              <div class="tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">NLP</span>
+                <span class="tag">Flask</span>
+              </div>
             </a>
           </div>
         </div>
@@ -170,7 +222,7 @@
       <div class="container">
         <div class="counter-container">
           <div class="counter-item">
-            <h2 id="hackathons">2</h2>
+            <h2 id="hackathons">5</h2>
             <p>Hackathons</p>
           </div>
           <div class="counter-item">
@@ -186,60 +238,29 @@
     </section>
 
     <footer>
-      <div class="footer-bar">
-        <div class="footer-left">
-          <a
-            href="https://www.linkedin.com/in/kauntiakash2/"
-            target="_self"
-            aria-label="LinkedIn"
-          >
+      <div class="footer-content">
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/kauntiakash2/" target="_blank" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a
-            href="https://github.com/kauntiaakash2"
-            target="_self"
-            aria-label="GitHub"
-          >
+          <a href="https://github.com/kauntiaakash2" target="_blank" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a
-            href="https://x.com/theakash2036"
-            target="_self"
-            aria-label="Twitter/X"
-          >
+          <a href="https://x.com/theakash2036" target="_blank" aria-label="Twitter/X">
             <i class="fab fa-x-twitter"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/codewitha.a/"
-            target="_self"
-            aria-label="Instagram"
-          >
-            <i class="fab fa-instagram"></i>
           </a>
           <a href="mailto:akashkauntia2006@gmail.com" aria-label="Email">
             <i class="fas fa-envelope"></i>
           </a>
-          <a
-            href="https://forms.gle/MqsTYo8vBnmHd2sY9"
-            aria-label="Contact Me"
-            target="_blank"
-            aria-label="contact"
-          >
-            <img
-              src="assets/contactme.png"
-              alt="Contact Me"
-              style="width: 23px; height: 20px"
-            />
+          <a href="https://forms.gle/MqsTYo8vBnmHd2sY9" target="_blank" aria-label="Contact Me">
+            <img src="assets/contactme.png" alt="Contact Me" />
           </a>
         </div>
-
-        <div class="footer-center">
-          <p>&copy; 2025 Made with ❤️ by Akash Agarwal.</p>
-        </div>
-
-        <div class="footer-right">
-          <a href="#top" class="back-to-top">⬆</a>
-        </div>
+        <div class="footer-divider"></div>
+        <p class="footer-text">&copy; 2026 Crafted with <span class="heart">❤️</span> by Akash Agarwal</p>
+        <a href="#hero" class="footer-top-btn" aria-label="Back to top">
+          <i class="fas fa-arrow-up"></i>
+        </a>
       </div>
     </footer>
 
