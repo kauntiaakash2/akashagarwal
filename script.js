@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   displayQuote();
   
   // Change quote every 7 seconds
-  setInterval(displayQuote, 7000);
+  setInterval(displayQuote, 60000);
 });
 
 // Add transition styles for quote
