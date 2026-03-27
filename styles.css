@@ -491,7 +491,7 @@ nav .menu {
 .btn-primary {
   display: inline-block;
   padding: 0.85rem 2rem;
-  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  background: linear-gradient(135deg, #6a4bff 0%, #7b5fff 100%);
   color: #ffffff;
   text-decoration: none;
   border-radius: 4px;
@@ -502,22 +502,22 @@ nav .menu {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 4px 15px rgba(106, 75, 255, 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
-  background: linear-gradient(135deg, #ff8c42 0%, #ffaa4d 100%);
+  box-shadow: 0 8px 25px rgba(106, 75, 255, 0.6);
+  background: linear-gradient(135deg, #7b5fff 0%, #8a6fff 100%);
 }
 
 .btn-secondary {
   display: inline-block;
   padding: 0.85rem 2rem;
   background: transparent;
-  color: #b0b0b0;
+  color: #d0d0d0;
   text-decoration: none;
-  border: 2px solid #666666;
+  border: 2px solid #4ecdc4;
   border-radius: 4px;
   font-weight: 600;
   font-size: 0.95rem;
@@ -528,9 +528,9 @@ nav .menu {
 }
 
 .btn-secondary:hover {
-  border-color: #ffffff;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
+  border-color: #4ecdc4;
+  color: #4ecdc4;
+  background: rgba(78, 205, 196, 0.1);
   transform: translateY(-2px);
 }
 
