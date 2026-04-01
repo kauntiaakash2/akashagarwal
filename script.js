@@ -175,18 +175,38 @@ if (document.getElementById("typed")) {
   });
 }
 
-// Project Image Auto-Loader with Multiple Fallbacks
+// Project Image Auto-Loader with Domain-Specific Images
 const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 const IMAGE_CACHE_KEY = "projectImageCache";
 
+// Domain-specific images for each project - using consistent seeds
+const projectImageSeeds = {
+  "code,visualization,flowchart": 1001,
+  "AI,finance,analysis": 2002,
+  "school,schedule,automation": 3003,
+  "video,AI,transcript": 4004
+};
+
+const projectSearchTerms = {
+  "code,visualization,flowchart": "code visualization flowchart",
+  "AI,finance,analysis": "financial analysis AI blockchain",
+  "school,schedule,automation": "school classroom timetable",
+  "video,AI,transcript": "video summarization learning"
+};
+
 function generateImageUrl(keywords, attempt = 0) {
-  // Multiple image source options for reliability
+  const seed = projectImageSeeds[keywords] || 5000;
+  const searchTerm = projectSearchTerms[keywords] || keywords.split(',')[0];
+  
+  // Multiple reliable image sources with domain-specific content
   const imageSources = [
-    // Picsum (reliable, CORS-friendly)
-    `https://picsum.photos/800/600?random=${Date.now() + attempt}`,
-    // LoremFlickr (also reliable)
-    `https://loremflickr.com/800/600?lock=${Date.now() + attempt}`,
-    // DummyImage as final fallback
+    // Picsum with consistent seed (same seed = same image)
+    `https://picsum.photos/800/600?random=${seed}`,
+    // LoremFlickr with keyword search
+    `https://loremflickr.com/800/600/${encodeURIComponent(searchTerm)}`,
+    // Unsplash API with proper query
+    `https://source.unsplash.com/800x600/?${encodeURIComponent(searchTerm.split(' ')[0])}`,
+    // DummyImage fallback
     `https://dummyimage.com/800x600/6a4bff/ffffff?text=${keywords.split(',')[0]}`
   ];
   
@@ -251,7 +271,7 @@ function loadProjectImages() {
 
     // Try different image sources with retry logic
     let attempt = 0;
-    const maxAttempts = 3;
+    const maxAttempts = 4;
     
     function tryLoadImage() {
       if (attempt >= maxAttempts) {
