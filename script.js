@@ -251,63 +251,9 @@ function createGradientPlaceholder(keywords, index) {
 }
 
 function loadProjectImages() {
-  const projectCards = document.querySelectorAll(".project-card");
-  const cachedImages = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY) || "{}");
-  const now = Date.now();
-
-  projectCards.forEach((card, index) => {
-    const img = card.querySelector(".project-img");
-    const keywords = card.getAttribute("data-image-keywords");
-    
-    if (!img || !keywords) return;
-
-    // Check cache first
-    const cacheKey = keywords;
-    if (cachedImages[cacheKey] && (now - cachedImages[cacheKey].timestamp) < CACHE_EXPIRY) {
-      img.src = cachedImages[cacheKey].url;
-      console.log("Image loaded from cache:", cacheKey);
-      return;
-    }
-
-    // Try different image sources with retry logic
-    let attempt = 0;
-    const maxAttempts = 4;
-    
-    function tryLoadImage() {
-      if (attempt >= maxAttempts) {
-        // All attempts failed, use gradient placeholder
-        const placeholder = createGradientPlaceholder(keywords, index);
-        img.src = placeholder;
-        console.log("All image sources failed, using gradient placeholder for:", keywords);
-        return;
-      }
-
-      const imageUrl = generateImageUrl(keywords, attempt);
-      const tempImg = new Image();
-      
-      tempImg.onload = () => {
-        img.src = imageUrl;
-        // Cache successful image
-        cachedImages[cacheKey] = {
-          url: imageUrl,
-          timestamp: now
-        };
-        localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cachedImages));
-        console.log("Image loaded successfully:", keywords);
-      };
-      
-      tempImg.onerror = () => {
-        console.log(`Attempt ${attempt + 1} failed for:`, keywords);
-        attempt++;
-        tryLoadImage();
-      };
-      
-      tempImg.crossOrigin = "Anonymous";
-      tempImg.src = imageUrl;
-    }
-    
-    tryLoadImage();
-  });
+  // Images are now fixed in HTML, no need for dynamic loading
+  console.log("Using fixed project images from assets folder");
+  return;
 }
 
 // Load images when DOM is ready
