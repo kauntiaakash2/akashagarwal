@@ -140,7 +140,7 @@ const animateCounter = (id, start, end, duration) => {
 
 // Initialize Counters
 animateCounter("hackathons", 0, 5, 2000);
-animateCounter("project", 0, 3, 2000);
+animateCounter("project", 0, 5, 2000);
 
 // Time Counter
 let seconds = 0;

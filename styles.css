@@ -353,8 +353,8 @@ nav .menu {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
