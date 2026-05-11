@@ -74,11 +74,18 @@ function typeBootSequence() {
   setTimeout(typeBootSequence, currentLine === "" ? 40 : 95);
 }
 
-// Keep the fake OS status bar alive without external dependencies.
+// Keep the fake OS status bar alive in Indian Standard Time without external dependencies.
+const indianTimeFormatter = new Intl.DateTimeFormat("en-IN", {
+  timeZone: "Asia/Kolkata",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false
+});
+
 function updateClock() {
   if (!clock) return;
-  const now = new Date();
-  clock.textContent = `${now.toISOString().slice(11, 19)} UTC`;
+  clock.textContent = `${indianTimeFormatter.format(new Date())} IST`;
 }
 
 // Projects folder behaves like a crude classic window: minimize and restore only.
