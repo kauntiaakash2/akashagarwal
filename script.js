@@ -1,264 +1,109 @@
-// Array of inspirational quotes
-const quotes = [
-  { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-  { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
-  { text: "Life is 10% what happens to you and 90% how you react to it.", author: "Charles R. Swindoll" },
-  { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
-  { text: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle" },
-  { text: "The only impossible journey is the one you never begin.", author: "Tony Robbins" },
-  { text: "Success is not final, failure is not fatal.", author: "Winston Churchill" },
-  { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
-  { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
-  { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
-  { text: "Excellence is not a destination; it is a continuous journey that never ends.", author: "Brian Tracy" },
-  { text: "Your limitation—it's only your imagination.", author: "Unknown" },
+// Mechanical boot transcript printed into the terminal window.
+const bootLines = [
+  "AKASH_OS/98 [VERSION 0.9.8-BRUTAL]",
+  "COPYRIGHT (C) 2026 AKASH AGARWAL. ALL RIGHTS RESERVED.",
+  "",
+  "POST: CHECKING INTERFACE MEMORY .......... 64KB OK",
+  "POST: LOADING MONOSPACE VIDEO DRIVER ..... OK",
+  "POST: MOUNTING /portfolio ................ OK",
+  "POST: REJECTING GLASSMORPHISM ............ OK",
+  "",
+  "SYSTEM SPECS:",
+  "  NAME      : Akash Agarwal",
+  "  ROLE      : Full-Stack Developer // AI/ML Enthusiast // Competitive Programmer",
+  "  LOCATION  : India",
+  "  STATUS    : Open to Software Engineering, AI/ML, and Full-Stack internships",
+  "  SIGNAL    : build what matters; ship what works",
+  "",
+  "> cat ABOUT.DAT",
+  "  Computer Science student with 8.71 CGPA and ML internship experience.",
+  "  I build end-to-end applications across ML pipelines, backend services,",
+  "  full-stack products, and cloud-facing infrastructure.",
+  "",
+  "> cat SKILLS.SYS",
+  "  LANG  = [Python, C++, Java, JavaScript, C, SQL]",
+  "  WEB   = [React, Node.js, Express, Next.js, Spring, FastAPI]",
+  "  ML    = [TensorFlow, PyTorch, NLP, data analysis, model deployment]",
+  "  OPS   = [Docker, Git, GitHub, AWS, CI/CD fundamentals]",
+  "  CORE  = [DSA, system design, debugging, testing, product thinking]",
+  "",
+  "> query PROJECTS.DB --view=dense",
+  "  001 CodeFlowViz                 React / Visualization / JavaScript",
+  "  002 FinVerify AI                Python / AI-ML / NLP",
+  "  003 SmartClassroom Timetable    Scheduling / Full-Stack / SIH",
+  "  004 YouTube Summarizer          Python / NLP / Flask",
+  "",
+  "> execute link_to_classic_gui",
+  "  TARGET = https://kauntiaakash2.github.io/akashagarwal/",
+  "  Use the executable icon or command link below to open the original portfolio.",
+  "",
+  "BOOT COMPLETE. CURSOR ACTIVE."
 ];
 
-// Function to get random quote
-function getRandomQuote() {
-  return quotes[Math.floor(Math.random() * quotes.length)];
+const terminalOutput = document.getElementById("terminal-output");
+const clock = document.getElementById("system-clock");
+const projectsWindow = document.getElementById("projects");
+const projectsPanel = document.getElementById("projects-panel");
+const toggleProjects = document.getElementById("toggle-projects");
+const openProjects = document.getElementById("open-projects");
+
+let lineIndex = 0;
+let charIndex = 0;
+
+// Type one character at a time to keep the startup sequence deliberately machine-like.
+function typeBootSequence() {
+  if (!terminalOutput) return;
+
+  if (lineIndex >= bootLines.length) {
+    return;
+  }
+
+  const currentLine = bootLines[lineIndex];
+
+  if (charIndex < currentLine.length) {
+    terminalOutput.textContent += currentLine.charAt(charIndex);
+    charIndex += 1;
+    setTimeout(typeBootSequence, currentLine.startsWith(">") ? 14 : 7);
+    return;
+  }
+
+  terminalOutput.textContent += "\n";
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  lineIndex += 1;
+  charIndex = 0;
+  setTimeout(typeBootSequence, currentLine === "" ? 40 : 95);
 }
 
-// Function to display a quote
-function displayQuote() {
-  const quote = getRandomQuote();
-  const quoteTextEl = document.getElementById("quoteText");
-  const quoteAuthorEl = document.getElementById("quoteAuthor");
-  
-  if (quoteTextEl && quoteAuthorEl) {
-    // Fade out effect
-    quoteTextEl.style.opacity = "0.5";
-    quoteTextEl.style.transform = "scale(0.95)";
-    
-    setTimeout(() => {
-      quoteTextEl.textContent = `"${quote.text}"`;
-      quoteAuthorEl.textContent = `— ${quote.author}`;
-      
-      // Fade in effect
-      quoteTextEl.style.opacity = "1";
-      quoteTextEl.style.transform = "scale(1)";
-    }, 300);
+// Keep the fake OS status bar alive without external dependencies.
+function updateClock() {
+  if (!clock) return;
+  const now = new Date();
+  clock.textContent = `${now.toISOString().slice(11, 19)} UTC`;
+}
+
+// Projects folder behaves like a crude classic window: minimize and restore only.
+function setProjectsMinimized(isMinimized) {
+  if (!projectsWindow || !toggleProjects || !openProjects) return;
+  projectsWindow.classList.toggle("is-minimized", isMinimized);
+  toggleProjects.textContent = isMinimized ? "RESTORE" : "MINIMIZE";
+  openProjects.setAttribute("aria-expanded", String(!isMinimized));
+
+  if (!isMinimized) {
+    projectsWindow.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
-// Display initial quote on page load
 document.addEventListener("DOMContentLoaded", () => {
-  displayQuote();
-  
-  // Change quote every 7 seconds
-  setInterval(displayQuote, 60000);
-});
+  typeBootSequence();
+  updateClock();
+  setInterval(updateClock, 1000);
 
-// Add transition styles for quote
-const quoteText = document.getElementById("quoteText");
-if (quoteText) {
-  quoteText.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-}
-
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
-
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
-});
-window.addEventListener("scroll", function () {
-  const header = document.querySelector("header");
-  const hero = document.getElementById("hero");
-  const heroBottom = hero.offsetHeight;
-
-  if (window.scrollY < heroBottom - 50) {
-    header.classList.add("transparent");
-  } else {
-    header.classList.remove("transparent");
-  }
-});
-
-// Trigger on load
-window.dispatchEvent(new Event("scroll"));
-
-// Skill
-const skillSection = document.querySelector("#skills");
-const progressBars = document.querySelectorAll(".progress");
-
-const showProgress = () => {
-  progressBars.forEach((bar) => {
-    const value = bar.getAttribute("data-value");
-
-    if (!bar.classList.contains("animated")) {
-      bar.style.width = value;
-      bar.classList.add("animated"); // Mark as animated
-    }
+  toggleProjects?.addEventListener("click", () => {
+    setProjectsMinimized(!projectsWindow.classList.contains("is-minimized"));
   });
-};
 
-window.addEventListener("scroll", () => {
-  const sectionPos = skillSection.getBoundingClientRect().top;
-  const screenPos = window.innerHeight / 1.3;
-
-  if (sectionPos < screenPos) {
-    showProgress();
-  }
-});
-
-// Project
-const projectSection = document.querySelector("#projects");
-const projectCards = document.querySelectorAll(".project-card");
-
-const revealProjects = () => {
-  projectCards.forEach((card, index) => {
-    setTimeout(() => {
-      card.classList.add("visible");
-    }, index * 150); // Staggered animation
-  });
-};
-
-window.addEventListener("scroll", () => {
-  const sectionPos = projectSection.getBoundingClientRect().top;
-  const screenPos = window.innerHeight / 1.3;
-
-  if (sectionPos < screenPos) {
-    revealProjects();
-  }
-});
-
-// Counter Animation
-const animateCounter = (id, start, end, duration) => {
-  let current = start;
-  const range = end - start;
-  const increment = end > start ? 1 : -1;
-  const stepTime = Math.abs(Math.floor(duration / range));
-  const obj = document.getElementById(id);
-
-  const timer = setInterval(() => {
-    current += increment;
-    obj.textContent = current;
-    if (current === end) {
-      clearInterval(timer);
-    }
-  }, stepTime);
-};
-
-// Initialize Counters
-animateCounter("hackathons", 0, 5, 2000);
-animateCounter("project", 0, 5, 2000);
-
-// Time Counter
-let seconds = 0;
-const timeSpent = document.getElementById("timeSpent");
-setInterval(() => {
-  seconds++;
-  timeSpent.textContent = seconds;
-}, 1000);
-
-// Back to top
-document.querySelectorAll('a[href="#top"]').forEach((link) => {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  openProjects?.addEventListener("click", () => {
+    setProjectsMinimized(false);
+    projectsPanel?.focus?.();
   });
 });
-
-// Typed.js Animation
-if (document.getElementById("typed")) {
-  const typed = new Typed("#typed", {
-    strings: [
-      "ML Intern",
-      "Full-Stack Developer",
-      "Competitive Programmer",
-      "AI/ML Enthusiast"
-    ],
-    typeSpeed: 80,
-    backSpeed: 60,
-    backDelay: 1500,
-    loop: true,
-    cursorChar: "|"
-  });
-}
-
-// Project Image Auto-Loader with Domain-Specific Images
-const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
-const IMAGE_CACHE_KEY = "projectImageCache";
-
-// Domain-specific images for each project - using consistent seeds
-const projectImageSeeds = {
-  "code,visualization,flowchart": 1001,
-  "AI,finance,analysis": 2002,
-  "school,schedule,automation": 3003,
-  "video,AI,transcript": 4004
-};
-
-const projectSearchTerms = {
-  "code,visualization,flowchart": "code visualization flowchart",
-  "AI,finance,analysis": "financial analysis AI blockchain",
-  "school,schedule,automation": "school classroom timetable",
-  "video,AI,transcript": "video summarization learning"
-};
-
-function generateImageUrl(keywords, attempt = 0) {
-  const seed = projectImageSeeds[keywords] || 5000;
-  const searchTerm = projectSearchTerms[keywords] || keywords.split(',')[0];
-  
-  // Multiple reliable image sources with domain-specific content
-  const imageSources = [
-    // Picsum with consistent seed (same seed = same image)
-    `https://picsum.photos/800/600?random=${seed}`,
-    // LoremFlickr with keyword search
-    `https://loremflickr.com/800/600/${encodeURIComponent(searchTerm)}`,
-    // Unsplash API with proper query
-    `https://source.unsplash.com/800x600/?${encodeURIComponent(searchTerm.split(' ')[0])}`,
-    // DummyImage fallback
-    `https://dummyimage.com/800x600/6a4bff/ffffff?text=${keywords.split(',')[0]}`
-  ];
-  
-  return imageSources[attempt % imageSources.length];
-}
-
-function getPlaceholderColor(index) {
-  const colors = ["#6a4bff", "#4ecdc4", "#ffa502", "#ff6b6b", "#2dd4bf"];
-  return colors[index % colors.length];
-}
-
-function createGradientPlaceholder(keywords, index) {
-  // Create a gradient placeholder as fallback
-  const color1 = getPlaceholderColor(index);
-  const color2 = getPlaceholderColor(index + 1);
-  const heading = keywords.split(',')[0];
-  
-  const canvas = document.createElement('canvas');
-  canvas.width = 800;
-  canvas.height = 600;
-  
-  const ctx = canvas.getContext('2d');
-  const gradient = ctx.createLinearGradient(0, 0, 800, 600);
-  gradient.addColorStop(0, color1);
-  gradient.addColorStop(1, color2);
-  
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, 800, 600);
-  
-  // Add text
-  ctx.fillStyle = 'white';
-  ctx.font = 'bold 48px Arial';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(heading, 400, 250);
-  
-  ctx.font = '24px Arial';
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-  ctx.fillText('Project Image Loading...', 400, 350);
-  
-  return canvas.toDataURL('image/png');
-}
-
-function loadProjectImages() {
-  // Images are now fixed in HTML, no need for dynamic loading
-  console.log("Using fixed project images from assets folder");
-  return;
-}
-
-// Load images when DOM is ready
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", loadProjectImages);
-} else {
-  loadProjectImages();
-}
