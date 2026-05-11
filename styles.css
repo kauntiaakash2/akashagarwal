@@ -337,13 +337,16 @@ a {
 }
 
 .terminal-body {
-  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
   padding: 16px;
   background: var(--black);
 }
 
 .terminal-output {
-  min-height: 438px;
+  flex: 1 1 auto;
+  min-height: 0;
   margin: 0;
   overflow: auto;
   color: var(--accent);
@@ -353,6 +356,7 @@ a {
 }
 
 .command-row {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 9px;
@@ -381,6 +385,7 @@ a {
 .status-window {
   grid-column: 3;
   grid-row: 2;
+  align-self: start;
 }
 
 .status-body,
@@ -464,6 +469,7 @@ a {
 .notes-window {
   grid-column: 3;
   grid-row: 3;
+  align-self: start;
 }
 
 .note-grid {
@@ -634,14 +640,9 @@ a {
   }
 
   .terminal-body {
-    min-height: 420px;
+    height: 420px;
     padding: 12px;
   }
-
-  .terminal-output {
-    min-height: 326px;
-  }
-
   .title-bar h1,
   .title-bar h2 {
     font-size: 0.76rem;
