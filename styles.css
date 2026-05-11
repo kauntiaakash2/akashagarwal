@@ -486,25 +486,34 @@ a {
 }
 
 .skills-window {
-  grid-column: 1 / 2;
+  grid-column: 2 / -1;
   grid-row: 5;
   align-self: start;
 }
 
 .skill-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .skill-list li {
+  min-width: 0;
   padding: 10px;
+  border-right: 1px solid rgba(244, 255, 242, 0.32);
   border-bottom: 1px solid rgba(244, 255, 242, 0.32);
   color: var(--muted);
   font-size: 0.8rem;
+  overflow-wrap: anywhere;
 }
 
-.skill-list li:last-child {
+.skill-list li:nth-child(2n) {
+  border-right: 0;
+}
+
+.skill-list li:nth-last-child(-n + 2) {
   border-bottom: 0;
 }
 
@@ -517,7 +526,7 @@ a {
 
 .contact-window {
   grid-column: 2 / -1;
-  grid-row: 5;
+  grid-row: 6;
   align-self: start;
 }
 
@@ -554,6 +563,7 @@ a {
 
   .terminal-window,
   .data-window,
+  .skills-window,
   .contact-window {
     grid-column: 2;
   }
@@ -568,6 +578,25 @@ a {
   .notes-window { grid-row: 6; }
   .skills-window { grid-row: 7; }
   .contact-window { grid-row: 8; }
+}
+
+@media (max-width: 860px) {
+  .skill-list {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-list li,
+  .skill-list li:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .skill-list li:nth-last-child(-n + 2) {
+    border-bottom: 1px solid rgba(244, 255, 242, 0.32);
+  }
+
+  .skill-list li:last-child {
+    border-bottom: 0;
+  }
 }
 
 /* Mobile snaps the desktop into full-width structural cards. */
