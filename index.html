@@ -1,290 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&family=Quicksand:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>akXdev</title>
+    <meta
+      name="description"
+      content="Akash Agarwal portfolio rendered as a brutalist retro terminal desktop."
+    />
+    <title>Akash Agarwal // Terminal Desktop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=5" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <nav>
-        <h1 class="logo">Aa</h1>
-        <div class="hamburger" id="hamburger">&#9776;</div>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    <a class="skip-link" href="#terminal-output">Skip to terminal output</a>
 
-    <section id="hero">
-      <div class="overlay">
-        <h1>HI!</h1>
-        <h2>I am <span class="highlight">Akash Agarwal</span></h2>
-        <h3><span id="typed"></span></h3>
-        <a href="#projects" class="btn">Visit My Works</a>
-      </div>
-    </section>
+    <main class="desktop-shell" id="top">
+      <div class="desktop-grid" aria-hidden="true"></div>
 
-    <!-- Dynamic Quote Section -->
-    <section id="quote-section" class="quote-section">
-      <div class="quote-container">
-        <blockquote class="quote-text" id="quoteText">
-          "The only way to do great work is to love what you do." - Steve Jobs
-        </blockquote>
-        <p class="quote-author" id="quoteAuthor"></p>
-      </div>
-    </section>
+      <header class="system-bar" aria-label="Desktop status bar">
+        <a class="system-brand" href="#top" aria-label="AkashOS home">AKASH_OS/98</a>
+        <nav class="system-nav" aria-label="Desktop navigation">
+          <a href="#about">ABOUT.DAT</a>
+          <a href="#skills">SKILLS.SYS</a>
+          <a href="#projects">PROJECTS.DB</a>
+          <a href="#contact">CONTACT.TXT</a>
+        </nav>
+        <span class="system-clock" id="system-clock">00:00:00 UTC</span>
+      </header>
 
-    <section id="about" class="about-section">
-      <div class="about-container">
-        <div class="about-content">
-          <h2 class="about-headline">BUILD WHAT MATTERS.</h2>
-          <p class="about-intro">
-            Transform your ideas from concept to deployment. Full-stack development, AI/ML solutions, and scalable systems — built with precision and shipped with confidence.
-          </p>
-          <p class="about-text">
-            I'm Akash Agarwal, a Computer Science student (8.71 CGPA) and ML Intern specializing in end-to-end solutions. I build production-ready applications spanning ML pipelines, full-stack web apps, and cloud infrastructure. Currently open to internships in Software Engineering, AI/ML, and Full-Stack Development.
-          </p>
-          <div class="about-buttons">
-            <a href="#projects" class="btn-primary">View My Work</a>
-            <a href="https://drive.google.com/file/d/1F3tHzvdQ9hCQ12oJfWFYHiLLqSyjlIPL/view?usp=sharing" class="btn-secondary">Download Resume</a>
-          </div>
-        </div>
-        <div class="about-image">
-          <img src="assets/profile.png" alt="Akash Agarwal" />
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title skills-title">Skills that fuel my passion</h2>
-        
-        <div class="skill-cards-grid">
-          <!-- Languages & Databases -->
-          <div class="skill-card">
-            <div class="skill-icons-top">
-              <i class="devicon-python-plain"></i>
-              <i class="devicon-cplusplus-plain"></i>
-              <i class="devicon-javascript-plain"></i>
-              <i class="devicon-java-plain"></i>
-              <i class="devicon-c-plain"></i>
-              <i class="devicon-mysql-plain"></i>
-            </div>
-            <h3 class="skill-card-title">Languages & Databases</h3>
-            <p class="skill-card-description">Versatile programmer across Python, C++, Java, and JavaScript with strong competitive programming background and database design expertise</p>
-          </div>
-
-          <!-- Web Development -->
-          <div class="skill-card">
-            <div class="skill-icons-top">
-              <i class="devicon-react-plain"></i>
-              <i class="devicon-nodejs-plain"></i>
-              <i class="devicon-express-original"></i>
-              <i class="devicon-nextjs-original"></i>
-              <i class="devicon-spring-plain"></i>
-              <i class="devicon-fastapi-plain"></i>
-            </div>
-            <h3 class="skill-card-title">Web Development</h3>
-            <p class="skill-card-description">Full-stack expertise building modern web applications with React frontends and scalable backend services using Node.js, Express, and FastAPI</p>
-          </div>
-
-          <!-- Machine Learning & AI -->
-          <div class="skill-card">
-            <div class="skill-icons-top">
-              <i class="devicon-pytorch-plain"></i>
-              <i class="devicon-tensorflow-original"></i>
-              <i class="devicon-python-plain"></i>
-              <i class="fas fa-brain"></i>
-              <i class="fas fa-chart-line"></i>
-              <i class="fas fa-robot"></i>
-            </div>
-            <h3 class="skill-card-title">Machine Learning & AI</h3>
-            <p class="skill-card-description">Deep expertise in ML workflows with TensorFlow and PyTorch, from model development to deployment with strong data science fundamentals</p>
-          </div>
-
-          <!-- DevOps & Cloud -->
-          <div class="skill-card">
-            <div class="skill-icons-top">
-              <i class="devicon-docker-plain"></i>
-              <i class="devicon-git-plain"></i>
-              <i class="devicon-amazonwebservices-original"></i>
-              <i class="devicon-github-original"></i>
-              <i class="devicon-vscode-plain"></i>
-              <i class="fas fa-server"></i>
-            </div>
-            <h3 class="skill-card-title">DevOps & Cloud</h3>
-            <p class="skill-card-description">Proficient in containerization, version control, cloud deployment, and development environments for efficient CI/CD pipelines</p>
-          </div>
-
-          <!-- Problem Solving -->
-          <div class="skill-card">
-            <div class="skill-icons-top">
-              <i class="fas fa-code"></i>
-              <i class="fas fa-cube"></i>
-              <i class="fas fa-flask-vial"></i>
-              <i class="fas fa-bug"></i>
-              <i class="fas fa-rocket"></i>
-              <i class="fas fa-wand-magic-sparkles"></i>
-            </div>
-            <h3 class="skill-card-title">Core Competencies</h3>
-            <p class="skill-card-description">Complete development lifecycle expertise from problem analysis and system design to testing, deployment, and continuous optimization</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <p class="section-subtitle">Here are my works!</p>
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-grid" id="projects-grid">
-          <div class="project-card" data-image-keywords="code,visualization,flowchart">
-            <a
-              href="https://github.com/kauntiaakash2/CodeFlowViz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="assets/CodeFlowViz.png" alt="CodeFlowViz" class="project-img" />
-              <h3>CodeFlowViz</h3>
-              <p>
-                Interactive code flow visualizer that transforms complex code logic
-                into intuitive visual flowcharts - making code comprehension and debugging
-                effortless for developers.
-              </p>
-              <div class="tech-tags">
-                <span class="tag">React</span>
-                <span class="tag">Visualization</span>
-                <span class="tag">JavaScript</span>
-              </div>
-            </a>
-          </div>
-          <div class="project-card" data-image-keywords="AI,finance,analysis">
-            <a
-              href="https://github.com/kauntiaakash2/FinVerifyAI"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="assets/FinVerifyAI.png" alt="FinVerify AI" class="project-img" />
-              <h3>FinVerify AI</h3>
-              <p>
-                AI-powered trust gap analyzer that audits financial claims
-                for accuracy, bias, and missing context - built for consumer
-                protection.
-              </p>
-              <div class="tech-tags">
-                <span class="tag">Python</span>
-                <span class="tag">AI/ML</span>
-                <span class="tag">NLP</span>
-              </div>
-            </a>
-          </div>
-          <div class="project-card" data-image-keywords="school,schedule,automation">
-            <a
-              href="https://github.com/kauntiaakash2/SmartClassroom_TimeTable"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="assets/SmartClassroom.png" alt="SmartClassroom Timetable" class="project-img" />
-              <h3>SmartClassroom Timetable</h3>
-              <p>
-                Automated smart timetable generator built for SIH -
-                conflict-free scheduling for classrooms, faculty, and
-                resources at scale.
-              </p>
-              <div class="tech-tags">
-                <span class="tag">SIH</span>
-                <span class="tag">Scheduling</span>
-                <span class="tag">Full-Stack</span>
-              </div>
-            </a>
-          </div>
-          <div class="project-card" data-image-keywords="video,AI,transcript">
-            <a
-              href="https://github.com/kauntiaakash2/youtubeSummarizer"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="assets/YouTubeSummarizer.png" alt="YouTube Summarizer" class="project-img" />
-              <h3>YouTube Summarizer</h3>
-              <p>
-                Fetches video transcripts and distills them into clean,
-                readable summaries using NLP - no more 30-minute videos
-                for a 3-minute insight.
-              </p>
-              <div class="tech-tags">
-                <span class="tag">Python</span>
-                <span class="tag">NLP</span>
-                <span class="tag">Flask</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="counter-container">
-          <div class="counter-item">
-            <h2 id="hackathons">5</h2>
-            <p>Hackathons</p>
-          </div>
-          <div class="counter-item">
-            <h2 id="project">5</h2>
-            <p>Projects</p>
-          </div>
-          <div class="counter-item">
-            <h2 id="timeSpent">0</h2>
-            <p>Seconds on this site!<br />What are you waiting for?</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/in/kauntiakash2/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/kauntiaakash2" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://x.com/theakash2036" target="_blank" aria-label="Twitter/X">
-            <i class="fab fa-x-twitter"></i>
-          </a>
-          <a href="mailto:akashkauntia2006@gmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="https://forms.gle/MqsTYo8vBnmHd2sY9" target="_blank" aria-label="Contact Me">
-            <img src="assets/contactme.png" alt="Contact Me" />
-          </a>
-        </div>
-        <div class="footer-divider"></div>
-        <p class="footer-text">&copy; 2026 Crafted with <span class="heart">❤️</span> by Akash Agarwal</p>
-        <a href="#hero" class="footer-top-btn" aria-label="Back to top">
-          <i class="fas fa-arrow-up"></i>
+      <section class="desktop-icons" aria-label="Desktop shortcuts">
+        <a
+          class="desktop-icon classic-icon"
+          href="https://kauntiaakash2.github.io/akashagarwal/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="icon-file" aria-hidden="true">
+            <span class="icon-fold"></span>
+            <span class="icon-bits">101</span>
+          </span>
+          <span>Classic_<br />Portfolio.exe</span>
         </a>
-      </div>
-    </footer>
 
-    <script src="script.js?v=5"></script>
+        <button class="desktop-icon" type="button" id="open-projects" aria-controls="projects" aria-expanded="true">
+          <span class="icon-folder" aria-hidden="true"></span>
+          <span>Projects<br />Folder</span>
+        </button>
+      </section>
+
+      <section class="window terminal-window" aria-labelledby="terminal-title">
+        <div class="title-bar">
+          <div class="title-left">
+            <span class="window-controls" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <h1 id="terminal-title">C:\AKASH\PORTFOLIO\COMMAND.COM</h1>
+          </div>
+          <span class="title-meta">READY</span>
+        </div>
+
+        <div class="terminal-body">
+          <pre class="terminal-output" id="terminal-output" aria-live="polite"></pre>
+          <div class="command-row">
+            <span class="prompt">&gt;</span>
+            <a
+              class="terminal-command"
+              href="https://kauntiaakash2.github.io/akashagarwal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >execute link_to_classic_gui</a>
+            <span class="block-cursor" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="window status-window" aria-labelledby="status-title">
+        <div class="title-bar compact">
+          <h2 id="status-title">SYS_MONITOR</h2>
+          <span class="title-meta">LIVE</span>
+        </div>
+        <div class="status-body">
+          <dl>
+            <div><dt>NAME</dt><dd>Akash Agarwal</dd></div>
+            <div><dt>ROLE</dt><dd>Full-Stack + AI/ML</dd></div>
+            <div><dt>MODE</dt><dd>OPEN_TO_INTERNSHIPS</dd></div>
+            <div><dt>CGPA</dt><dd>8.71</dd></div>
+          </dl>
+        </div>
+      </aside>
+
+      <section class="window data-window" id="projects" aria-labelledby="projects-title">
+        <div class="title-bar">
+          <div class="title-left">
+            <span class="window-controls" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <h2 id="projects-title">PROJECTS_FOLDER\DATABASE_VIEW</h2>
+          </div>
+          <button class="window-button" type="button" id="toggle-projects">MINIMIZE</button>
+        </div>
+
+        <div class="data-body" id="projects-panel">
+          <div class="table-wrap" tabindex="0" aria-label="Project database table">
+            <table class="project-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>PROJECT</th>
+                  <th>STACK</th>
+                  <th>OUTPUT</th>
+                  <th>LINK</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>001</td>
+                  <td>CodeFlowViz</td>
+                  <td>React / JavaScript / Visualization</td>
+                  <td>Transforms code logic into readable flowcharts for comprehension and debugging.</td>
+                  <td><a href="https://github.com/kauntiaakash2/CodeFlowViz" target="_blank" rel="noopener noreferrer">OPEN</a></td>
+                </tr>
+                <tr>
+                  <td>002</td>
+                  <td>FinVerify AI</td>
+                  <td>Python / AI-ML / NLP</td>
+                  <td>Audits financial claims for accuracy, bias, and missing context.</td>
+                  <td><a href="https://github.com/kauntiaakash2/FinVerifyAI" target="_blank" rel="noopener noreferrer">OPEN</a></td>
+                </tr>
+                <tr>
+                  <td>003</td>
+                  <td>SmartClassroom Timetable</td>
+                  <td>Scheduling / Full-Stack / SIH</td>
+                  <td>Generates conflict-free timetables for rooms, faculty, and resources.</td>
+                  <td><a href="https://github.com/kauntiaakash2/SmartClassroom_TimeTable" target="_blank" rel="noopener noreferrer">OPEN</a></td>
+                </tr>
+                <tr>
+                  <td>004</td>
+                  <td>YouTube Summarizer</td>
+                  <td>Python / NLP / Flask</td>
+                  <td>Fetches transcripts and compresses long videos into compact summaries.</td>
+                  <td><a href="https://github.com/kauntiaakash2/youtubeSummarizer" target="_blank" rel="noopener noreferrer">OPEN</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="window notes-window" id="about" aria-labelledby="about-title">
+        <div class="title-bar compact">
+          <h2 id="about-title">ABOUT.DAT</h2>
+          <span class="title-meta">RAW</span>
+        </div>
+        <div class="note-grid">
+          <p>
+            Computer Science student and ML intern building deployable systems across model workflows,
+            backend services, and interface layers. I like tools that are legible, fast, and useful before they are decorative.
+          </p>
+          <a class="chunky-link" href="https://drive.google.com/file/d/1F3tHzvdQ9hCQ12oJfWFYHiLLqSyjlIPL/view?usp=sharing" target="_blank" rel="noopener noreferrer">DOWNLOAD_RESUME.PDF</a>
+        </div>
+      </section>
+
+      <section class="window skills-window" id="skills" aria-labelledby="skills-title">
+        <div class="title-bar compact">
+          <h2 id="skills-title">SKILLS.SYS</h2>
+          <span class="title-meta">LOADED</span>
+        </div>
+        <ul class="skill-list">
+          <li><span>LANG</span> Python, C++, Java, JavaScript, C, SQL</li>
+          <li><span>WEB</span> React, Node.js, Express, Next.js, Spring, FastAPI</li>
+          <li><span>ML</span> TensorFlow, PyTorch, NLP, data analysis, model deployment</li>
+          <li><span>OPS</span> Docker, Git, GitHub, AWS, CI/CD fundamentals</li>
+          <li><span>CORE</span> DSA, system design, testing, debugging, product thinking</li>
+        </ul>
+      </section>
+
+      <footer class="window contact-window" id="contact" aria-labelledby="contact-title">
+        <div class="title-bar compact">
+          <h2 id="contact-title">CONTACT.TXT</h2>
+          <span class="title-meta">EOF</span>
+        </div>
+        <div class="contact-grid">
+          <a href="mailto:akashkauntia2006@gmail.com">EMAIL</a>
+          <a href="https://github.com/kauntiaakash2" target="_blank" rel="noopener noreferrer">GITHUB</a>
+          <a href="https://www.linkedin.com/in/kauntiakash2/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+          <a href="https://x.com/theakash2036" target="_blank" rel="noopener noreferrer">X/TWITTER</a>
+        </div>
+        <p class="copyright">© 2026 // Crafted by Akash Agarwal // NO_SOFT_UI</p>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
   </body>
 </html>
