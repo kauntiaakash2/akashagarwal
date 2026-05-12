@@ -1,4 +1,5 @@
 import React from "react";
+import profilePortrait from "../assets/profile.png";
 
 const navItems = ["Home", "About", "Experience", "Projects", "Contact"];
 
@@ -67,16 +68,20 @@ const socialLinks = [
 
 function PortraitCard() {
   return (
-    <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-royal/10 bg-gradient-to-br from-white via-cream to-[#F2E4D5] shadow-editorial">
-      <div className="absolute inset-x-8 bottom-0 h-[78%] rounded-t-full bg-royal" />
-      <div className="absolute left-1/2 top-20 h-32 w-32 -translate-x-1/2 rounded-full bg-[#D7B89B] shadow-2xl" />
-      <div className="absolute bottom-0 left-1/2 h-64 w-56 -translate-x-1/2 rounded-t-[7rem] bg-rust" />
-      <div className="absolute inset-6 rounded-3xl border border-white/70" />
-      <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/85 p-5 text-center shadow-soft backdrop-blur">
-        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-rust">Portrait Space</p>
-        <p className="mt-2 font-serif text-2xl text-royal">Professional cutout</p>
-      </div>
-    </div>
+    <figure className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-royal/10 bg-gradient-to-br from-white via-cream to-[#F2E4D5] shadow-editorial">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(192,86,33,0.16),transparent_30%),radial-gradient(circle_at_80%_75%,rgba(10,42,94,0.18),transparent_34%)]" />
+      <div className="absolute inset-x-8 bottom-0 h-[82%] rounded-t-full bg-royal/95" />
+      <img
+        src={profilePortrait}
+        alt="Professional portrait of Akash Agarwal"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_26%] mix-blend-normal"
+      />
+      <div className="absolute inset-6 rounded-3xl border border-white/70" aria-hidden="true" />
+      <figcaption className="absolute bottom-6 left-6 right-6 rounded-2xl bg-cream/90 p-5 shadow-soft backdrop-blur">
+        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-rust">Akash Agarwal</p>
+        <p className="mt-2 font-serif text-2xl text-royal">AI/ML & Full-Stack Developer</p>
+      </figcaption>
+    </figure>
   );
 }
 
