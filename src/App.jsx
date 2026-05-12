@@ -68,19 +68,12 @@ const socialLinks = [
 
 function PortraitCard() {
   return (
-    <figure className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-royal/10 bg-gradient-to-br from-white via-cream to-[#F2E4D5] shadow-editorial">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(192,86,33,0.16),transparent_30%),radial-gradient(circle_at_80%_75%,rgba(10,42,94,0.18),transparent_34%)]" />
-      <div className="absolute inset-x-8 bottom-0 h-[82%] rounded-t-full bg-royal/95" />
+    <figure className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-royal/10 bg-white shadow-editorial">
       <img
         src={profilePortrait}
         alt="Professional portrait of Akash Agarwal"
-        className="absolute inset-0 h-full w-full object-cover object-[50%_26%] mix-blend-normal"
+        className="h-full w-full object-cover object-[50%_26%]"
       />
-      <div className="absolute inset-6 rounded-3xl border border-white/70" aria-hidden="true" />
-      <figcaption className="absolute bottom-6 left-6 right-6 rounded-2xl bg-cream/90 p-5 shadow-soft backdrop-blur">
-        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-rust">Akash Agarwal</p>
-        <p className="mt-2 font-serif text-2xl text-royal">AI/ML & Full-Stack Developer</p>
-      </figcaption>
     </figure>
   );
 }
@@ -116,7 +109,7 @@ function App() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-royal/10 bg-cream/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
           <a href="#home" className="font-serif text-2xl font-bold tracking-tight text-royal">
-            AA
+            Aa
           </a>
           <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
             {navItems.map((item) => (
