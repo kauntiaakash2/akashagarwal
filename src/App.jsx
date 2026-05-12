@@ -1,336 +1,254 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
 
-const CLASSIC_PORTFOLIO_LINK = "https://kauntiaakash2.github.io/akashagarwal/";
+const navItems = ["Home", "About", "Experience", "Projects", "Contact"];
 
-const bootLines = [
-  "AKASH_OS/98 BIOS v1.0.7",
-  "COPYRIGHT (C) 1998-2026 AGARWAL SYSTEMS",
-  "POST: CHECKING INTERFACE MEMORY... OK",
-  "POST: CHECKING REACT KERNEL... OK",
-  "POST: DETECTING TAILWIND BUS... OK",
-  "POST: MOUNTING /portfolio... OK",
-  "POST: LOADING TERMINAL DRIVER... OK",
-  "POST: INDEXING PROJECTS.DB... OK",
-  "POST: SYNCING KIIT PROFILE... OK",
-  "BOOT: EXECUTING AKASH_OS.EXE",
+const stats = [
+  { value: "8.71", label: "CGPA" },
+  { value: "200+", label: "DSA Problems Solved" },
+  { value: "2-Star", label: "CodeChef Rating" },
+  { value: "SSoC'25", label: "Open Source Contributor" },
 ];
 
-const initialTerminalHistory = [
+const projects = [
   {
-    type: "system",
-    text: [
-      "AKASH_OS/98 COMMAND TERMINAL ONLINE",
-      "SPEC: React Kernel // Tailwind Renderer // Monospace CRT Driver",
-      "TYPE 'help' TO LIST AVAILABLE COMMANDS.",
-    ],
-  },
-];
-
-const projectRows = [
-  {
-    id: "001",
-    name: "Code Kurukshetra (KIIT FEST 9.0)",
-    stack: "Competitive Coding / Event Ops / KIIT",
-    output: "Built and coordinated a high-energy programming contest for festival participants.",
+    eyebrow: "Interactive Developer Tool",
+    title: "FinVerify AI",
+    description:
+      "React & FastAPI multi-source data pipeline leveraging yfinance, achieving a response time of under 2 seconds and 57% verification accuracy.",
+    github: "https://github.com/kauntiaakash2/FinVerifyAI",
+    demo: "https://fin-verify-ai.vercel.app/",
   },
   {
-    id: "002",
-    name: "CodeZen Community",
-    stack: "Community / DSA / Mentorship",
-    output: "Helped organize coding culture, peer learning, and developer practice sessions.",
-  },
-  {
-    id: "003",
-    name: "Social Winter of Code Season 6",
-    stack: "Open Source / Collaboration / Git",
-    output: "Contributed to collaborative open-source workflows and shipped maintainable updates.",
+    eyebrow: "Coding Environment",
+    title: "CodeZen 2.0",
+    description:
+      "Interactive coding environment and flow visualizer designed to make algorithms feel tactile, explorable, and easier to reason about.",
+    github: "https://github.com/kauntiaakash2/CodeFlowViz-2.0",
+    demo: "https://code-flow-viz-2-0.vercel.app/",
   },
 ];
 
-function BootScreen({ onComplete }) {
-  const [visibleLines, setVisibleLines] = useState([]);
+const experiences = [
+  {
+    role: "Machine Learning Development Intern",
+    organization: "Infiltrix",
+    detail:
+      "Built production-grade systems reducing prediction latency by 30% using FastAPI and Scikit-learn.",
+  },
+  {
+    role: "Web Dev Team Member",
+    organization: "AlgoZenith KIIT Chapter",
+    detail:
+      "Organized programming contests, authored 20+ algorithmic problems, and built responsive interfaces for 100+ users.",
+  },
+];
 
-  useEffect(() => {
-    const lineTimers = bootLines.map((line, index) =>
-      setTimeout(() => {
-        setVisibleLines((current) => [...current, line]);
-      }, index * 185),
-    );
+const skillGroups = [
+  {
+    title: "Programming & Web",
+    skills: ["Python", "C++", "React.js", "Next.js", "Node.js", "Express", "Flask"],
+  },
+  {
+    title: "Core Concepts & ML",
+    skills: ["Data Structures & Algorithms", "OOP", "Machine Learning"],
+  },
+  {
+    title: "Database & Cloud",
+    skills: ["MongoDB", "PostgreSQL", "Firebase", "AWS"],
+  },
+];
 
-    const finishTimer = setTimeout(onComplete, 2500);
+const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/akash-agarwal" },
+  { label: "GitHub", href: "https://github.com/kauntiaakash2" },
+  { label: "CodeChef", href: "https://www.codechef.com/users/kauntiaakash2" },
+  { label: "Codeforces", href: "https://codeforces.com/profile/kauntiaakash2" },
+];
 
-    return () => {
-      lineTimers.forEach(clearTimeout);
-      clearTimeout(finishTimer);
-    };
-  }, [onComplete]);
-
+function PortraitCard() {
   return (
-    <main className="crt-lines min-h-screen bg-terminal p-4 font-mono text-sm uppercase text-phosphor sm:p-8">
-      <section className="terminal-scanlines min-h-[calc(100vh-2rem)] border border-phosphor p-4 sm:min-h-[calc(100vh-4rem)] sm:p-6">
-        <p className="mb-6">&gt; POWER SIGNAL DETECTED</p>
-        <div className="space-y-2" aria-live="polite">
-          {visibleLines.map((line) => (
-            <p key={line}>{line}</p>
-          ))}
-        </div>
-        <div className="mt-6 flex items-center gap-2">
-          <span>&gt;</span>
-          <span className="h-5 w-3 animate-pulse bg-phosphor" aria-hidden="true" />
-        </div>
-      </section>
-    </main>
-  );
-}
-
-function SystemClock() {
-  const [time, setTime] = useState("");
-
-  const formatter = useMemo(
-    () =>
-      new Intl.DateTimeFormat("en-IN", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      }),
-    [],
-  );
-
-  useEffect(() => {
-    const tick = () => setTime(`${formatter.format(new Date())} IST`);
-    tick();
-    const interval = setInterval(tick, 1000);
-    return () => clearInterval(interval);
-  }, [formatter]);
-
-  return <span className="border-l border-phosphor px-3 py-2 text-right">{time}</span>;
-}
-
-function Terminal() {
-  const [history, setHistory] = useState(initialTerminalHistory);
-  const [input, setInput] = useState("");
-  const endRef = useRef(null);
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    endRef.current?.scrollIntoView({ block: "end" });
-  }, [history]);
-
-  const getCommandOutput = (command) => {
-    switch (command) {
-      case "help":
-        return ["AVAILABLE COMMANDS:", "help", "whoami", "skills", "projects", "clear"];
-      case "whoami":
-        return ["Akash Agarwal // Software Engineering Student at KIIT // AI/ML & Full-Stack Developer"];
-      case "skills":
-        return ["SKILLS.SYS:", "C++", "DSA", "React", "Deep Learning", "Scrum"];
-      case "projects":
-        return [
-          "PROJECTS.DB:",
-          "Code Kurukshetra (KIIT FEST 9.0) :: Coding event leadership and contest operations.",
-          "CodeZen Community :: Developer community building, DSA practice, and peer mentorship.",
-          "Social Winter of Code Season 6 :: Open-source collaboration and contribution workflows.",
-        ];
-      case "":
-        return [""];
-      default:
-        return [`ERR: COMMAND '${command}' NOT FOUND. TYPE 'help'.`];
-    }
-  };
-
-  const submitCommand = (event) => {
-    event.preventDefault();
-    const command = input.trim().toLowerCase();
-
-    if (command === "clear") {
-      setHistory([]);
-      setInput("");
-      return;
-    }
-
-    setHistory((current) => [
-      ...current,
-      { type: "command", text: [`> ${input}`] },
-      { type: command === "" ? "system" : "output", text: getCommandOutput(command) },
-    ]);
-    setInput("");
-  };
-
-  return (
-    <section
-      className="flex min-h-[520px] flex-col border border-phosphor bg-terminal"
-      onClick={() => inputRef.current?.focus()}
-      aria-labelledby="terminal-title"
-    >
-      <div className="flex items-center justify-between border-b border-phosphor bg-phosphor px-3 py-2 text-terminal">
-        <h1 id="terminal-title" className="text-sm font-black uppercase tracking-wider">
-          C:\AKASH\PORTFOLIO\COMMAND.COM
-        </h1>
-        <span className="text-xs font-black">READY</span>
+    <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-royal/10 bg-gradient-to-br from-white via-cream to-[#F2E4D5] shadow-editorial">
+      <div className="absolute inset-x-8 bottom-0 h-[78%] rounded-t-full bg-royal" />
+      <div className="absolute left-1/2 top-20 h-32 w-32 -translate-x-1/2 rounded-full bg-[#D7B89B] shadow-2xl" />
+      <div className="absolute bottom-0 left-1/2 h-64 w-56 -translate-x-1/2 rounded-t-[7rem] bg-rust" />
+      <div className="absolute inset-6 rounded-3xl border border-white/70" />
+      <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/85 p-5 text-center shadow-soft backdrop-blur">
+        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-rust">Portrait Space</p>
+        <p className="mt-2 font-serif text-2xl text-royal">Professional cutout</p>
       </div>
+    </div>
+  );
+}
 
-      <div className="terminal-scanlines flex flex-1 flex-col overflow-hidden p-3 text-sm uppercase leading-relaxed sm:p-4">
-        <div id="terminal-output" className="flex-1 overflow-y-auto pr-2" aria-live="polite">
-          {history.map((entry, entryIndex) => (
-            <div key={`${entry.type}-${entryIndex}`} className="mb-3">
-              {entry.text.map((line, lineIndex) => (
-                <p key={`${line}-${lineIndex}`} className="whitespace-pre-wrap break-words">
-                  {line || "\u00A0"}
-                </p>
-              ))}
-            </div>
-          ))}
-          <div ref={endRef} />
-        </div>
+function SectionLabel({ children, light = false }) {
+  return (
+    <p className={`text-xs font-bold uppercase tracking-[0.35em] ${light ? "text-[#F4D2BD]" : "text-rust"}`}>
+      {children}
+    </p>
+  );
+}
 
-        <form className="mt-3 flex items-center border-t border-phosphor pt-3" onSubmit={submitCommand}>
-          <label className="mr-2" htmlFor="terminal-input">
-            &gt;
-          </label>
-          <input
-            ref={inputRef}
-            id="terminal-input"
-            className="min-w-0 flex-1 rounded-none border-0 bg-transparent p-0 uppercase text-phosphor caret-transparent outline-none ring-0 focus:border-0 focus:outline-none focus:ring-0"
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-            autoComplete="off"
-            autoCapitalize="off"
-            spellCheck={false}
-            autoFocus
-            aria-label="Terminal command input"
-          />
-          <span className="ml-1 h-5 w-3 animate-pulse bg-phosphor" aria-hidden="true" />
-        </form>
+function ProjectImagePlaceholder({ title }) {
+  return (
+    <div className="relative min-h-64 overflow-hidden rounded-2xl bg-royal p-6 text-white shadow-soft">
+      <div className="absolute -right-12 -top-12 h-44 w-44 rounded-full border border-white/20" />
+      <div className="absolute bottom-8 left-8 right-8 rounded-xl border border-white/20 bg-white/10 p-5 backdrop-blur">
+        <p className="text-xs uppercase tracking-[0.28em] text-[#F4D2BD]">Case Study Visual</p>
+        <p className="mt-3 font-serif text-4xl">{title}</p>
       </div>
-    </section>
+      <div className="absolute left-8 top-8 flex gap-2">
+        <span className="h-3 w-3 rounded-full bg-rust" />
+        <span className="h-3 w-3 rounded-full bg-white/50" />
+        <span className="h-3 w-3 rounded-full bg-white/30" />
+      </div>
+    </div>
   );
 }
 
-function DesktopIcon({ children, href }) {
-  const sharedClasses =
-    "block border border-phosphor bg-panel p-3 text-center text-xs font-bold uppercase text-phosphor no-underline hover:bg-phosphor hover:text-terminal focus:bg-phosphor focus:text-terminal focus:outline-none";
-
-  return href ? (
-    <a className={sharedClasses} href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  ) : (
-    <button className={`${sharedClasses} w-full cursor-pointer`} type="button">
-      {children}
-    </button>
-  );
-}
-
-function FileGlyph({ folder = false }) {
+function App() {
   return (
-    <span className="mx-auto mb-3 block h-14 w-12 whitespace-pre border-2 border-phosphor bg-terminal p-1 text-[10px] leading-3">
-      {folder ? "DIR\nSYS" : "EXE\n101\nRUN"}
-    </span>
-  );
-}
-
-function MainOS() {
-  return (
-    <main className="crt-lines terminal-scanlines min-h-screen bg-terminal p-3 font-mono text-phosphor sm:p-5">
-      <div className="grid min-h-[calc(100vh-1.5rem)] grid-cols-1 gap-3 border border-phosphor p-3 lg:grid-cols-[150px_minmax(0,1fr)_280px] lg:grid-rows-[auto_minmax(480px,1fr)_auto] sm:min-h-[calc(100vh-2.5rem)]">
-        <header className="grid border border-phosphor text-xs font-black uppercase lg:col-span-3 lg:grid-cols-[auto_1fr_auto]">
-          <a className="border-b border-phosphor bg-phosphor px-3 py-2 text-terminal no-underline lg:border-b-0 lg:border-r" href="#top">
-            AKASH_OS/98
+    <div className="min-h-screen bg-cream text-ink">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-royal/10 bg-cream/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
+          <a href="#home" className="font-serif text-2xl font-bold tracking-tight text-royal">
+            AA
           </a>
-          <nav className="flex overflow-x-auto border-b border-phosphor lg:border-b-0" aria-label="System tabs">
-            {['ABOUT.DAT', 'SKILLS.SYS', 'PROJECTS.DB', 'CONTACT.TXT'].map((tab) => (
-              <a
-                key={tab}
-                className="border-r border-phosphor px-3 py-2 text-phosphor no-underline hover:bg-phosphor hover:text-terminal focus:bg-phosphor focus:text-terminal focus:outline-none"
-                href={`#${tab.split('.')[0].toLowerCase()}`}
-              >
-                {tab}
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
+            {navItems.map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold uppercase tracking-[0.25em] text-rust transition hover:text-royal">
+                {item}
               </a>
             ))}
           </nav>
-          <SystemClock />
-        </header>
+          <a href="mailto:akashagarwal@example.com" className="rounded-full border border-rust px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-rust transition hover:bg-rust hover:text-white">
+            Email
+          </a>
+        </div>
+      </header>
 
-        <aside className="grid content-start gap-3 border border-phosphor p-3 lg:row-span-2" aria-label="Executable shortcuts">
-          <h2 className="border-b border-phosphor pb-2 text-xs font-black uppercase">EXECUTABLES</h2>
-          <DesktopIcon href={CLASSIC_PORTFOLIO_LINK}>
-            <FileGlyph />
-            Classic_<br />Portfolio.exe
-          </DesktopIcon>
-          <DesktopIcon>
-            <FileGlyph folder />
-            Projects<br />Folder
-          </DesktopIcon>
-          <DesktopIcon>
-            <FileGlyph />
-            Resume<br />Dump.dat
-          </DesktopIcon>
-        </aside>
-
-        <Terminal />
-
-        <aside id="about" className="border border-phosphor bg-panel" aria-labelledby="monitor-title">
-          <div className="border-b border-phosphor bg-phosphor px-3 py-2 text-terminal">
-            <h2 id="monitor-title" className="text-sm font-black uppercase">SYS_MONITOR</h2>
-          </div>
-          <table className="w-full border-collapse text-left text-xs uppercase">
-            <tbody>
-              <tr className="border-b border-phosphor">
-                <th className="border-r border-phosphor p-3">Name</th>
-                <td className="p-3">Akash Agarwal</td>
-              </tr>
-              <tr className="border-b border-phosphor">
-                <th className="border-r border-phosphor p-3">Role</th>
-                <td className="p-3">AI/ML + Full-Stack Developer</td>
-              </tr>
-              <tr className="border-b border-phosphor">
-                <th className="border-r border-phosphor p-3">Status</th>
-                <td className="p-3">ONLINE / BUILDING</td>
-              </tr>
-              <tr>
-                <th className="border-r border-phosphor p-3">Base</th>
-                <td className="p-3">KIIT</td>
-              </tr>
-            </tbody>
-          </table>
-        </aside>
-
-        <section id="projects" className="border border-phosphor bg-panel lg:col-span-2" aria-labelledby="projects-title">
-          <div className="border-b border-phosphor bg-phosphor px-3 py-2 text-terminal">
-            <h2 id="projects-title" className="text-sm font-black uppercase">PROJECTS.DB // DATABASE_VIEW</h2>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[760px] border-collapse text-left text-xs uppercase">
-              <thead>
-                <tr className="border-b border-phosphor">
-                  <th className="border-r border-phosphor p-3">ID</th>
-                  <th className="border-r border-phosphor p-3">Project</th>
-                  <th className="border-r border-phosphor p-3">Stack</th>
-                  <th className="p-3">Output</th>
-                </tr>
-              </thead>
-              <tbody>
-                {projectRows.map((project) => (
-                  <tr key={project.id} className="border-b border-phosphor last:border-b-0">
-                    <td className="border-r border-phosphor p-3">{project.id}</td>
-                    <td className="border-r border-phosphor p-3 font-black">{project.name}</td>
-                    <td className="border-r border-phosphor p-3">{project.stack}</td>
-                    <td className="p-3">{project.output}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <main id="home" className="pt-24">
+        <section className="bg-cream px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+          <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+            <div>
+              <SectionLabel>Hey, I am</SectionLabel>
+              <h1 className="mt-6 max-w-5xl font-serif text-[clamp(4.4rem,12vw,11rem)] font-black uppercase leading-[0.82] tracking-[-0.08em] text-royal">
+                Akash Agarwal
+              </h1>
+              <p className="mt-8 max-w-2xl text-xl leading-8 text-ink/75 sm:text-2xl sm:leading-9">
+                B.Tech AI/ML Student & Full-Stack Developer creating scalable, user-centric applications and intelligent systems.
+              </p>
+            </div>
+            <PortraitCard />
           </div>
         </section>
-      </div>
-    </main>
+
+        <section id="about" className="bg-cream px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-7xl">
+            <SectionLabel>About & Stats</SectionLabel>
+            <p className="mt-6 max-w-6xl font-serif text-4xl leading-tight tracking-[-0.03em] text-royal sm:text-5xl lg:text-6xl">
+              I am a Computer Science student at KIIT specializing in Python, C++, and modern web technologies like Next.js. I blend a strong foundation in Data Structures and Algorithms with a deep interest in Machine Learning to build performant, real-world solutions.
+            </p>
+            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat) => (
+                <article key={stat.label} className="rounded-xl border border-royal/15 bg-white/40 p-7 shadow-soft">
+                  <p className="font-serif text-5xl font-bold text-royal">{stat.value}</p>
+                  <p className="mt-3 text-sm font-semibold uppercase tracking-[0.22em] text-rust">{stat.label}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" className="bg-royal px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <SectionLabel light>Selected Projects</SectionLabel>
+            <h2 className="mt-5 max-w-4xl font-serif text-5xl leading-none tracking-[-0.04em] sm:text-7xl">
+              Intelligent products with editorial restraint.
+            </h2>
+            <div className="mt-14 space-y-8">
+              {projects.map((project) => (
+                <article key={project.title} className="grid gap-8 rounded-xl bg-white p-6 text-ink shadow-editorial lg:grid-cols-[0.92fr_1.08fr] lg:p-8">
+                  <div className="flex flex-col justify-between py-2">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.28em] text-rust">{project.eyebrow}</p>
+                      <h3 className="mt-5 font-serif text-4xl font-bold tracking-[-0.03em] text-royal sm:text-5xl">{project.title}</h3>
+                      <p className="mt-6 text-lg leading-8 text-ink/72">{project.description}</p>
+                    </div>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <a href={project.demo} target="_blank" rel="noreferrer" className="rounded-xl bg-royal px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:bg-rust">
+                        Live Demo
+                      </a>
+                      <a href={project.github} target="_blank" rel="noreferrer" className="rounded-xl border border-royal/20 px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-royal transition hover:border-rust hover:text-rust">
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                  <ProjectImagePlaceholder title={project.title} />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="bg-cream px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <SectionLabel>Work Experience</SectionLabel>
+            <div className="mt-8 grid gap-10 lg:grid-cols-[0.55fr_1fr]">
+              <h2 className="font-serif text-5xl leading-none tracking-[-0.04em] text-royal sm:text-7xl">Practice shaped by shipping.</h2>
+              <div className="grid gap-5 md:grid-cols-2">
+                {experiences.map((experience, index) => (
+                  <article key={experience.role} className={`${index === 1 ? "md:mt-16" : ""} rounded-xl border border-royal/15 bg-white/55 p-8 shadow-soft`}>
+                    <p className="font-serif text-6xl text-rust/35">0{index + 1}</p>
+                    <h3 className="mt-8 font-serif text-3xl font-bold text-royal">{experience.role}</h3>
+                    <p className="mt-2 text-sm font-bold uppercase tracking-[0.22em] text-rust">{experience.organization}</p>
+                    <p className="mt-6 text-lg leading-8 text-ink/72">{experience.detail}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-cream px-5 pb-24 sm:px-8 lg:px-10">
+          <div className="mx-auto max-w-7xl border-t border-royal/15 pt-16">
+            <SectionLabel>Technical Arsenal</SectionLabel>
+            <div className="mt-8 divide-y divide-royal/15 rounded-xl border border-royal/15 bg-white/45 shadow-soft">
+              {skillGroups.map((group, index) => (
+                <details key={group.title} className="group p-6 open:bg-white/55" open={index === 0}>
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-3xl font-bold text-royal">
+                    {group.title}
+                    <span className="text-rust transition group-open:rotate-45">+</span>
+                  </summary>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {group.skills.map((skill) => (
+                      <span key={skill} className="rounded-xl border border-royal/15 bg-cream px-4 py-2 text-sm font-semibold text-ink/75">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="contact" className="overflow-hidden bg-royal px-5 py-16 text-white sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-wrap gap-5">
+            {socialLinks.map((link) => (
+              <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="text-xs font-bold uppercase tracking-[0.25em] text-[#F4D2BD] transition hover:text-white">
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <p className="mt-12 font-serif text-[clamp(4rem,15vw,13rem)] font-black uppercase leading-[0.78] tracking-[-0.08em] text-white">
+            Akash Agarwal
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 }
 
-export default function App() {
-  const [isBooting, setIsBooting] = useState(true);
-
-  return isBooting ? <BootScreen onComplete={() => setIsBooting(false)} /> : <MainOS />;
-}
+export default App;

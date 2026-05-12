@@ -1,10 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --font-mono: "JetBrains Mono", "IBM Plex Mono", "Fira Code", Consolas, monospace;
-}
 
 @layer base {
   * {
@@ -19,42 +17,20 @@
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
-    background: #000000;
-    color: #00ff00;
-    font-family: var(--font-mono);
+    background: #fdfbf7;
+    color: #151515;
+    font-family: "Inter", system-ui, sans-serif;
+    text-rendering: geometricPrecision;
   }
 
+  a,
   button,
-  input,
-  a {
-    font: inherit;
+  summary {
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {
-    background: #00ff00;
-    color: #000000;
-  }
-}
-
-@layer utilities {
-  .terminal-scanlines {
-    background-image: linear-gradient(rgba(0, 255, 0, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 0, 0.08) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-
-  .crt-lines::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      180deg,
-      rgba(0, 255, 0, 0.08) 0,
-      rgba(0, 255, 0, 0.08) 1px,
-      transparent 1px,
-      transparent 4px
-    );
-    opacity: 0.45;
+    background: #c05621;
+    color: #ffffff;
   }
 }
