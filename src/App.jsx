@@ -118,8 +118,8 @@ function App() {
               </a>
             ))}
           </nav>
-          <a href="mailto:akashagarwal@example.com" className="rounded-full border border-rust px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-rust transition hover:bg-rust hover:text-white">
-            Email
+          <a href="https://drive.google.com/file/d/1Omf8lkj2MndUt0o8TqtI1dP7dURLlfaH/view?usp=sharing" className="rounded-full border border-rust px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-rust transition hover:bg-rust hover:text-white">
+            Resume
           </a>
         </div>
       </header>
