@@ -25,7 +25,7 @@ const projects = [
     description:
       "Interactive coding environment and flow visualizer designed to make algorithms feel tactile, explorable, and easier to reason about.",
     github: "https://github.com/kauntiaakash2/CodeFlowViz-2.0",
-    demo: "https://code-flow-viz-2-0.vercel.app/",
+    demo: "https://code-flow-viz-2-0-frontend.vercel.app/",
   },
 ];
 
@@ -37,7 +37,7 @@ const experiences = [
       "Built production-grade systems reducing prediction latency by 30% using FastAPI and Scikit-learn.",
   },
   {
-    role: "Web Dev Team Member",
+    role: "CP & Web Dev Team Member",
     organization: "AlgoZenith KIIT Chapter",
     detail:
       "Organized programming contests, authored 20+ algorithmic problems, and built responsive interfaces for 100+ users.",
@@ -60,9 +60,9 @@ const skillGroups = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/akash-agarwal" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/kauntiakash2/" },
   { label: "GitHub", href: "https://github.com/kauntiaakash2" },
-  { label: "CodeChef", href: "https://www.codechef.com/users/kauntiaakash2" },
+  { label: "CodeChef", href: "https://www.codechef.com/users/kauntiakash2" },
   { label: "Codeforces", href: "https://codeforces.com/profile/kauntiaakash2" },
 ];
 
