@@ -37,7 +37,7 @@ const experiences = [
       "Built production-grade systems reducing prediction latency by 30% using FastAPI and Scikit-learn.",
   },
   {
-    role: "CP & Web Dev Team Member",
+    role: "Technical Lead",
     organization: "AlgoZenith KIIT Chapter",
     detail:
       "Organized programming contests, authored 20+ algorithmic problems, and built responsive interfaces for 100+ users.",
