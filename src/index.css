@@ -23,6 +23,13 @@
     text-rendering: geometricPrecision;
   }
 
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: #0f1115;
+      color: #f2f4f8;
+    }
+  }
+
   a,
   button,
   summary {
@@ -32,5 +39,48 @@
   ::selection {
     background: #c05621;
     color: #ffffff;
+  }
+}
+
+@layer base {
+  .dark body {
+    background: #0f1115;
+    color: #f2f4f8;
+  }
+
+  .dark .bg-cream {
+    background-color: #131822 !important;
+  }
+
+  .dark .bg-cream\/90 {
+    background-color: rgb(19 24 34 / 0.9) !important;
+  }
+
+  .dark .bg-royal {
+    background-color: #1d2c4f !important;
+  }
+
+  .dark .bg-white,
+  .dark .bg-white\/10,
+  .dark .bg-white\/40,
+  .dark .bg-white\/45,
+  .dark .bg-white\/55 {
+    background-color: #1f2633 !important;
+  }
+
+  .dark .text-ink,
+  .dark .text-ink\/72,
+  .dark .text-ink\/75 {
+    color: #e7edf7 !important;
+  }
+
+  .dark .text-royal {
+    color: #c9d7ff !important;
+  }
+
+  .dark .border-royal\/10,
+  .dark .border-royal\/15,
+  .dark .border-royal\/20 {
+    border-color: rgb(201 215 255 / 0.2) !important;
   }
 }

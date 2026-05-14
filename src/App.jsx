@@ -104,6 +104,40 @@ function ProjectImagePlaceholder({ title }) {
 }
 
 function App() {
+  const [theme, setTheme] = React.useState("light");
+
+  React.useEffect(() => {
+    const storedTheme = window.localStorage.getItem("theme");
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const applyTheme = (nextTheme) => {
+      document.documentElement.classList.toggle("dark", nextTheme === "dark");
+      setTheme(nextTheme);
+    };
+
+    if (storedTheme === "light" || storedTheme === "dark") {
+      applyTheme(storedTheme);
+    } else {
+      applyTheme(mediaQuery.matches ? "dark" : "light");
+    }
+
+    const handlePreferenceChange = (event) => {
+      if (!window.localStorage.getItem("theme")) {
+        applyTheme(event.matches ? "dark" : "light");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handlePreferenceChange);
+    return () => mediaQuery.removeEventListener("change", handlePreferenceChange);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    window.localStorage.setItem("theme", nextTheme);
+    setTheme(nextTheme);
+  };
+
   return (
     <div className="min-h-screen bg-cream text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-royal/10 bg-cream/90 backdrop-blur-xl">
@@ -118,10 +152,20 @@ function App() {
               </a>
             ))}
           </nav>
-          <a href="https://drive.google.com/file/d/1Omf8lkj2MndUt0o8TqtI1dP7dURLlfaH/view?usp=sharing" target="_blank" 
-  rel="noopener noreferrer" className="rounded-full border border-rust px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-rust transition hover:bg-rust hover:text-white">
-            Resume
-          </a>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="rounded-full border border-rust px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-rust transition hover:bg-rust hover:text-white"
+              aria-label="Toggle dark mode"
+            >
+              {theme === "dark" ? "Light Mode" : "Dark Mode"}
+            </button>
+            <a href="https://drive.google.com/file/d/1Omf8lkj2MndUt0o8TqtI1dP7dURLlfaH/view?usp=sharing" target="_blank" 
+    rel="noopener noreferrer" className="rounded-full border border-rust px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-rust transition hover:bg-rust hover:text-white">
+              Resume
+            </a>
+          </div>
         </div>
       </header>
 
