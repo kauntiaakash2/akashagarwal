@@ -1,35 +1,67 @@
-# Akash Agarwal — Premium Editorial Portfolio
+# ✨ Akash Agarwal — Premium Editorial Portfolio
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Deploy](https://img.shields.io/badge/deploy-vercel-black.svg)
 
-## About
+A high-performance, editorial-style personal portfolio for showcasing full-stack development work, AI/ML projects, and competitive programming achievements.
 
-This repository contains the source code for Akash Agarwal’s personal portfolio website. It is designed as a high-performance, editorial-style showcase for full-stack development work, AI/ML projects, and competitive programming achievements.
+---
 
-The UI intentionally avoids generic portfolio templates and instead uses a magazine-inspired visual system with strong typographic hierarchy, generous whitespace, and a high-contrast Cream (`#FDFBF7`) and Royal Blue (`#0A2A5E`) palette.
+## 📚 Table of Contents
 
-## Highlights
+- [About](#-about)
+- [Highlights](#-highlights)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Run Locally](#-run-locally)
+- [Deployment Note (`gh-pages`)](#-deployment-note-gh-pages)
+- [Roadmap](#-roadmap)
+- [Usage, Cloning & Credits](#-usage-cloning--credits)
+- [Contributing](#-contributing)
 
-- **Editorial UI/UX:** Serif-forward heading system and clean sans-serif body text for readability.
-- **Responsive Layout:** Mobile-first, utility-based styling with Tailwind CSS.
-- **Project Showcase:** Dedicated sections for technical projects and achievements.
-- **Deployment Strategy:** Vercel hosts the app, while the `gh-pages` branch safely redirects GitHub Pages traffic.
+---
 
-## Tech Stack
+## 🧾 About
 
-- **Framework:** React.js / Next.js
-- **Styling:** Tailwind CSS
-- **Fonts:** Google Fonts (Playfair Display, Inter)
-- **Deployment:** Vercel
-- **Version Control:** Git + GitHub
+This repository contains the source code for **Akash Agarwal’s personal portfolio website**.
 
-## Getting Started
+The interface intentionally avoids generic portfolio templates and uses a magazine-inspired visual language with:
+
+- strong typographic hierarchy,
+- generous whitespace,
+- and a high-contrast palette: **Cream (`#FDFBF7`)** + **Royal Blue (`#0A2A5E`)**.
+
+---
+
+## 🌟 Highlights
+
+- **Editorial UI/UX** — Serif-forward heading system with clean sans-serif body text.
+- **Responsive Layout** — Mobile-first, utility-based styling with Tailwind CSS.
+- **Project Showcase** — Dedicated sections for technical projects and achievements.
+- **Deployment Strategy** — Vercel hosts the app; `gh-pages` safely redirects GitHub Pages traffic.
+
+---
+
+## 🛠 Tech Stack
+
+| Area | Technology |
+|------|------------|
+| Framework | React.js / Next.js |
+| Styling | Tailwind CSS |
+| Fonts | Google Fonts (Playfair Display, Inter) |
+| Deployment | Vercel |
+| Version Control | Git + GitHub |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-Install the following before running locally:
+Install these tools before running locally:
 
-- [Node.js](https://nodejs.org/) (16.x or newer recommended)
+- [Node.js](https://nodejs.org/) (**16.x or newer** recommended)
 - npm (or yarn)
 - Git
 
@@ -55,7 +87,9 @@ Install the following before running locally:
    yarn install
    ```
 
-## Run Locally
+---
+
+## 💻 Run Locally
 
 Start the development server:
 
@@ -67,22 +101,28 @@ yarn dev
 
 Then open [http://localhost:3000](http://localhost:3000).
 
-## Deployment Note (`gh-pages`)
+---
+
+## 📦 Deployment Note (`gh-pages`)
 
 This project uses a dual-deployment pattern:
 
-- `main` branch → full app deployment on Vercel.
-- `gh-pages` branch → contains only a redirect `index.html` for GitHub Pages traffic.
+- `main` → full app deployment on **Vercel**
+- `gh-pages` → redirect-only `index.html` for **GitHub Pages** traffic
 
-> Do **not** merge `gh-pages` into `main`, or you may overwrite the application source.
+> ⚠️ Do **not** merge `gh-pages` into `main`, or you may overwrite the application source.
 
-## Roadmap
+---
 
-- Integrate a headless CMS (e.g., Sanity/Contentful) for easier content updates.
+## 🧭 Roadmap
+
+- Integrate a headless CMS (e.g., **Sanity** / **Contentful**) for easier content updates.
 - Add dark mode while preserving the editorial visual identity.
-- Add a technical blog section for project deep-dives and engineering writeups.
+- Add a technical blog section for project deep-dives and engineering write-ups.
 
-## Usage, Cloning & Credits
+---
+
+## 🤝 Usage, Cloning & Credits
 
 You are welcome to fork or reference this codebase for learning and portfolio inspiration.
 
@@ -90,9 +130,11 @@ If you reuse this structure or significant parts of the implementation, please p
 
 If this repo helped you, consider giving it a ⭐.
 
-## Contributing
+---
+
+## 🧩 Contributing
 
 Contributions, issues, and feature requests are welcome.
 
-- Open an issue: https://github.com/kauntiaakash2/akashagarwal/issues
+- Open an issue: <https://github.com/kauntiaakash2/akashagarwal/issues>
 - Submit a pull request with a clear summary of changes
