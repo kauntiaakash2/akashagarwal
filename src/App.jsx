@@ -21,7 +21,7 @@ const projects = [
   },
   {
     eyebrow: "Coding Environment",
-    title: "CodeZen 2.0",
+    title: "CodeFlowViz 2.0",
     description:
       "Interactive coding environment and flow visualizer designed to make algorithms feel tactile, explorable, and easier to reason about.",
     github: "https://github.com/kauntiaakash2/CodeFlowViz-2.0",
