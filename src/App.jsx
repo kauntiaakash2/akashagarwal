@@ -25,7 +25,7 @@ const projects = [
     description:
       "Interactive coding environment and flow visualizer designed to make algorithms feel tactile, explorable, and easier to reason about.",
     github: "https://github.com/kauntiaakash2/CodeFlowViz-2.0",
-    demo: "https://code-flow-viz-2-0-frontend.vercel.app/",
+    website: "https://code-flow-viz-2-0-frontend.vercel.app/",
   },
   {
     eyebrow: "Community Platform",
@@ -33,7 +33,7 @@ const projects = [
     description:
       "Official chapter website experience for AlgoZenith, designed to showcase events, resources, and community initiatives with a modern, responsive interface.",
     github: "https://github.com/kauntiaakash2/AlgoZenith-Website",
-    demo: "https://algozenithkiit.codes/",
+    website: "https://algozenithkiit.codes/",
   },
 ];
 
