@@ -27,6 +27,14 @@ const projects = [
     github: "https://github.com/kauntiaakash2/CodeFlowViz-2.0",
     demo: "https://code-flow-viz-2-0-frontend.vercel.app/",
   },
+  {
+    eyebrow: "Community Platform",
+    title: "AlgoZenith Website",
+    description:
+      "Official chapter website experience for AlgoZenith, designed to showcase events, resources, and community initiatives with a modern, responsive interface.",
+    github: "https://github.com/kauntiaakash2/AlgoZenith-Website",
+    demo: "https://algozenithkiit.codes/",
+  },
 ];
 
 const experiences = [
