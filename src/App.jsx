@@ -12,12 +12,12 @@ const stats = [
 
 const projects = [
   {
-    eyebrow: "Interactive Developer Tool",
-    title: "FinVerify AI",
+    eyebrow: "Community Platform",
+    title: "AlgoZenith Website",
     description:
-      "React & FastAPI multi-source data pipeline leveraging yfinance, achieving a response time of under 2 seconds and 57% verification accuracy.",
-    github: "https://github.com/kauntiaakash2/FinVerifyAI",
-    demo: "https://fin-verify-ai.vercel.app/",
+      "Official chapter website experience for AlgoZenith, designed to showcase events, resources, and community initiatives with a modern, responsive interface.",
+    github: "https://github.com/kauntiaakash2/AlgoZenith-Website",
+    demo: "https://algozenithkiit.codes/",
   },
   {
     eyebrow: "Coding Environment",
@@ -28,12 +28,12 @@ const projects = [
     demo: "https://code-flow-viz-2-0-frontend.vercel.app/",
   },
   {
-    eyebrow: "Community Platform",
-    title: "AlgoZenith Website",
+    eyebrow: "Interactive Developer Tool",
+    title: "FinVerify AI",
     description:
-      "Official chapter website experience for AlgoZenith, designed to showcase events, resources, and community initiatives with a modern, responsive interface.",
-    github: "https://github.com/kauntiaakash2/AlgoZenith-Website",
-    demo: "https://algozenithkiit.codes/",
+      "React & FastAPI multi-source data pipeline leveraging yfinance, achieving a response time of under 2 seconds and 57% verification accuracy.",
+    github: "https://github.com/kauntiaakash2/FinVerifyAI",
+    demo: "https://fin-verify-ai.vercel.app/",
   },
 ];
 
