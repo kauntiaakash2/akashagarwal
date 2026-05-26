@@ -227,7 +227,7 @@ function App() {
                     </div>
                     <div className="mt-8 flex flex-wrap gap-3">
                       <a href={project.demo} target="_blank" rel="noreferrer" className="rounded-xl bg-royal px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:bg-rust">
-                        Live Demo
+                        Live View
                       </a>
                       <a href={project.github} target="_blank" rel="noreferrer" className="rounded-xl border border-royal/20 px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-royal transition hover:border-rust hover:text-rust">
                         GitHub
