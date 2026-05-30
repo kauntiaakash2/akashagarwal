@@ -1,45 +1,54 @@
-# ✨ Akash Agarwal — Premium Editorial Portfolio
+# ✨ Akash Agarwal — Editorial Portfolio
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![React](https://img.shields.io/badge/React-18.3.1-61dafb.svg)
+![Vite](https://img.shields.io/badge/Vite-5.4.11-646cff.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Deploy](https://img.shields.io/badge/deploy-vercel-black.svg)
 
-A high-performance, editorial-style personal portfolio for showcasing full-stack development work, AI/ML projects, and competitive programming achievements.
+A fast, responsive personal portfolio for **Akash Agarwal**. The site presents full-stack projects, AI/ML experience, competitive programming highlights, and contact links through an editorial, magazine-inspired interface.
 
 ---
 
 ## 📚 Table of Contents
 
 - [About](#-about)
-- [Highlights](#-highlights)
+- [Features](#-features)
 - [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
-- [Run Locally](#-run-locally)
-- [Deployment Note (`gh-pages`)](#-deployment-note-gh-pages)
-- [Roadmap](#-roadmap)
-- [Usage, Cloning & Credits](#-usage-cloning--credits)
+- [Available Scripts](#-available-scripts)
+- [Deployment](#-deployment)
+- [Customization Guide](#-customization-guide)
 - [Contributing](#-contributing)
+- [Credits](#-credits)
 
 ---
 
 ## 🧾 About
 
-This repository contains the source code for **Akash Agarwal’s personal portfolio website**.
+This repository contains the source code for Akash Agarwal's portfolio website. It is built as a Vite + React single-page application and styled with Tailwind CSS.
 
-The interface intentionally avoids generic portfolio templates and uses a magazine-inspired visual language with:
+The visual system intentionally avoids generic portfolio templates and uses:
 
-- strong typographic hierarchy,
+- strong serif-led typographic hierarchy,
 - generous whitespace,
-- and a high-contrast palette: **Cream (`#FDFBF7`)** + **Royal Blue (`#0A2A5E`)**.
+- responsive card-based sections,
+- a light/dark theme toggle,
+- and a high-contrast editorial palette: **Cream (`#FDFBF7`)**, **Royal Blue (`#0A2A5E`)**, **Rust (`#C05621`)**, and **Ink (`#151515`)**.
 
 ---
 
-## 🌟 Highlights
+## 🌟 Features
 
-- **Editorial UI/UX** — Serif-forward heading system with clean sans-serif body text.
-- **Responsive Layout** — Mobile-first, utility-based styling with Tailwind CSS.
-- **Project Showcase** — Dedicated sections for technical projects and achievements.
-- **Deployment Strategy** — Vercel hosts the app; `gh-pages` safely redirects GitHub Pages traffic.
+- **Editorial landing page** with a bold hero section and portrait card.
+- **About & stats section** highlighting academics, DSA practice, ratings, and open-source involvement.
+- **Selected projects showcase** with live demo and GitHub links.
+- **Experience section** for internships, leadership, and shipped work.
+- **Technical arsenal accordion** for grouped skills.
+- **Dark mode support** using `localStorage` and system preference detection.
+- **Responsive layout** optimized for mobile, tablet, and desktop screens.
+- **Vercel-ready build** powered by Vite.
 
 ---
 
@@ -47,11 +56,30 @@ The interface intentionally avoids generic portfolio templates and uses a magazi
 
 | Area | Technology |
 |------|------------|
-| Framework | React.js / Next.js |
-| Styling | Tailwind CSS |
-| Fonts | Google Fonts (Playfair Display, Inter) |
+| Framework | React 18 |
+| Build Tool | Vite 5 |
+| Styling | Tailwind CSS 3 |
+| Fonts | Google Fonts: Playfair Display + Inter |
 | Deployment | Vercel |
-| Version Control | Git + GitHub |
+| Package Manager | npm |
+
+---
+
+## 🗂 Project Structure
+
+```text
+.
+├── assets/              # Images and static visual assets
+├── src/
+│   ├── App.jsx          # Main portfolio layout and content data
+│   ├── index.css        # Tailwind layers, base styles, and dark-mode overrides
+│   └── main.jsx         # React entry point
+├── index.html           # Vite HTML shell
+├── package.json         # Scripts and dependencies
+├── tailwind.config.js   # Tailwind theme tokens
+├── postcss.config.js    # PostCSS/Tailwind pipeline
+└── vite.config.js       # Vite configuration
+```
 
 ---
 
@@ -59,10 +87,10 @@ The interface intentionally avoids generic portfolio templates and uses a magazi
 
 ### Prerequisites
 
-Install these tools before running locally:
+Install these tools before running the project locally:
 
-- [Node.js](https://nodejs.org/) (**16.x or newer** recommended)
-- npm (or yarn)
+- [Node.js](https://nodejs.org/) 18.x or newer
+- npm
 - Git
 
 ### Installation
@@ -83,52 +111,56 @@ Install these tools before running locally:
 
    ```bash
    npm install
-   # or
-   yarn install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the local URL shown in your terminal. By default, Vite serves the app at:
+
+   ```text
+   http://localhost:5173
    ```
 
 ---
 
-## 💻 Run Locally
+## 📜 Available Scripts
 
-Start the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Then open [http://localhost:3000](http://localhost:3000).
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Starts the Vite development server on `0.0.0.0`. |
+| `npm run build` | Builds the production bundle into `dist/`. |
+| `npm run preview` | Serves the production build locally for review. |
 
 ---
 
-## 📦 Deployment Note (`gh-pages`)
+## 📦 Deployment
 
-This project uses a dual-deployment pattern:
+The app is suitable for Vercel deployment with the default Vite settings:
 
-- `main` → full app deployment on **Vercel**
-- `gh-pages` → redirect-only `index.html` for **GitHub Pages** traffic
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+- **Install command:** `npm install`
 
-> ⚠️ Do **not** merge `gh-pages` into `main`, or you may overwrite the application source.
-
----
-
-## 🧭 Roadmap
-
-- Integrate a headless CMS (e.g., **Sanity** / **Contentful**) for easier content updates.
-- Add dark mode while preserving the editorial visual identity.
-- Add a technical blog section for project deep-dives and engineering write-ups.
+If GitHub Pages is also configured, keep any redirect-only `gh-pages` branch separate from `main` so the application source is not overwritten.
 
 ---
 
-## 🤝 Usage, Cloning & Credits
+## 🎨 Customization Guide
 
-You are welcome to fork or reference this codebase for learning and portfolio inspiration.
+Most portfolio content can be updated from `src/App.jsx`:
 
-If you reuse this structure or significant parts of the implementation, please provide attribution back to this repository.
+- `navItems` controls the header navigation.
+- `stats` controls the metric cards in the About section.
+- `projects` controls the project cards, GitHub links, and live demo links.
+- `experiences` controls the Work Experience cards.
+- `skillGroups` controls the Technical Arsenal accordion.
+- `socialLinks` controls the footer links.
 
-If this repo helped you, consider giving it a ⭐.
+Theme tokens such as colors, font stacks, and shadows live in `tailwind.config.js`. Global base styles and dark-mode overrides live in `src/index.css`.
 
 ---
 
@@ -136,5 +168,20 @@ If this repo helped you, consider giving it a ⭐.
 
 Contributions, issues, and feature requests are welcome.
 
-- Open an issue: <https://github.com/kauntiaakash2/akashagarwal/issues>
-- Submit a pull request with a clear summary of changes
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes with a clear message.
+4. Open a pull request with a concise summary and screenshots when the UI changes.
+
+Useful links:
+
+- Issues: <https://github.com/kauntiaakash2/akashagarwal/issues>
+- Pull requests: <https://github.com/kauntiaakash2/akashagarwal/pulls>
+
+---
+
+## 🤝 Credits
+
+Built and maintained by **Akash Agarwal**.
+
+You are welcome to fork or reference this codebase for learning and portfolio inspiration. If you reuse the structure or significant parts of the implementation, please provide attribution back to this repository.
