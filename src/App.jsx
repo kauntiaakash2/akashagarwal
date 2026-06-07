@@ -2,6 +2,7 @@ import React from "react";
 import profilePortrait from "../assets/profile.png";
 import { PortfolioLoadingScreen } from "./components/PortfolioLoadingScreen.jsx";
 import UnderConstructionCard from "./components/UnderConstructionCard.jsx";
+import ScrollTextBarrel from "./components/ScrollTextBarrel.jsx";
 
 const navItems = ["Home", "About", "Experience", "Projects", "Badges", "Contact"];
 
@@ -361,6 +362,7 @@ function App() {
         </section>
       </main>
 
+      <ScrollTextBarrel />
       <UnderConstructionCard />
 
       <footer id="contact" className="overflow-hidden bg-royal px-5 py-16 text-white sm:px-8 lg:px-10">
