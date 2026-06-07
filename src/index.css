@@ -10,15 +10,15 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
-    background: #fdfbf7;
-    color: #151515;
+    background: #000000;
+    color: #f2f2f2;
     font-family: "Inter", system-ui, sans-serif;
     text-rendering: geometricPrecision;
   }
@@ -37,8 +37,8 @@
   }
 
   ::selection {
-    background: #c05621;
-    color: #ffffff;
+    background: #ff3b30;
+    color: #000000;
   }
 }
 
