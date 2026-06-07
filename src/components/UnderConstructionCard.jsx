@@ -165,30 +165,47 @@ const StyledWrapper = styled.div`
   }
 
   /*______Social Media______*/
-  .social-media:before {
-    content: " ";
-    display: block;
+  .social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Handles spacing perfectly, no need for margins on individual links */
+    padding-top: 15px; 
+    position: relative;
     width: 100%;
+  }
+
+  /* The dividing line */
+  .social-media:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%; /* Keeps the line slightly inset */
     height: 2px;
-    transform: translatey(10px);
     background: #414141;
   }
 
   .social-media a {
-    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: inherit;
+    transition: transform 0.2s ease; /* Optional: smooth hover effect */
   }
 
-  .social-media a:last-child {
-    margin-right: 0;
+  /* Optional: Adds a nice little lift effect when hovering over the icons */
+  .social-media a:hover {
+    transform: translateY(-2px); 
   }
 
   .social-media a svg {
     color: #ff5858;
-    transform: translatex(25px) translateY(20px);
     width: 20px;
+    height: 20px; /* Good practice to set height equal to width for SVG icons */
     fill: currentColor;
+    /* Removed the weird transform translates here! */
   }
 
   @keyframes pulse-red {
