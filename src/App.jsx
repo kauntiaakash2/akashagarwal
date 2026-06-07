@@ -1,7 +1,7 @@
 import React from "react";
 import profilePortrait from "../assets/profile.png";
 
-const navItems = ["Home", "About", "Experience", "Projects", "Contact"];
+const navItems = ["Home", "About", "Experience", "Projects", "Badges", "Contact"];
 
 const stats = [
   { value: "8.71", label: "CGPA" },
@@ -34,6 +34,37 @@ const projects = [
       "React & FastAPI multi-source data pipeline leveraging yfinance, achieving a response time of under 2 seconds and 57% verification accuracy.",
     github: "https://github.com/kauntiaakash2/FinVerifyAI",
     demo: "https://fin-verify-ai.vercel.app/",
+  },
+];
+
+const digitalBadges = [
+  {
+    title: "GSSoC 2026",
+    role: "Project Admin",
+    issuer: "GS Labs by GirlScript Foundation",
+    accent: "#4fe0ca",
+    icon: "⚙️",
+  },
+  {
+    title: "SSoC 2025",
+    role: "Open Source Contributor",
+    issuer: "Social Summer of Code",
+    accent: "#f4a261",
+    icon: "</>",
+  },
+  {
+    title: "CodeChef",
+    role: "2-Star Programmer",
+    issuer: "Competitive Programming",
+    accent: "#7c5cff",
+    icon: "★",
+  },
+  {
+    title: "AlgoZenith KIIT",
+    role: "Technical Lead",
+    issuer: "Chapter Leadership",
+    accent: "#c05621",
+    icon: "AZ",
   },
 ];
 
@@ -235,6 +266,45 @@ function App() {
                     </div>
                   </div>
                   <ProjectImagePlaceholder title={project.title} />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="badges" className="bg-cream px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-8 lg:grid-cols-[0.42fr_1fr] lg:items-end">
+              <div>
+                <SectionLabel>Digital Badges</SectionLabel>
+                <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-royal sm:text-7xl">
+                  Proof of practice, contribution, and community.
+                </h2>
+              </div>
+              <p className="max-w-3xl text-lg leading-8 text-ink/72 lg:justify-self-end">
+                A living collection of recognitions from open-source programs, leadership work, and competitive programming milestones. More verified badges can be added here as they come in.
+              </p>
+            </div>
+
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+              {digitalBadges.map((badge) => (
+                <article key={badge.title} className="group relative overflow-hidden rounded-3xl border border-royal/15 bg-white/55 p-6 shadow-soft transition duration-300 hover:-translate-y-2 hover:shadow-editorial">
+                  <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full opacity-20 blur-2xl" style={{ backgroundColor: badge.accent }} />
+                  <div className="relative mx-auto flex aspect-square max-w-[13rem] items-center justify-center rounded-full bg-[#11182f] p-4 text-white shadow-editorial">
+                    <div className="absolute inset-3 rounded-full border-2 border-[#627dff]" />
+                    <div className="absolute inset-0 rounded-[42%] bg-[#253153] opacity-80 transition duration-300 group-hover:rotate-12" />
+                    <div className="relative z-10 flex h-full w-full flex-col items-center justify-center rounded-full border border-white/10 bg-[#1f2949] text-center">
+                      <span className="text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white/65">{badge.issuer}</span>
+                      <span className="mt-4 font-serif text-3xl font-black leading-none text-white">{badge.title}</span>
+                      <span className="mt-4 flex h-14 w-14 items-center justify-center rounded-2xl border-4 border-white bg-white/95 text-lg font-black text-royal shadow-soft" style={{ color: badge.accent }}>
+                        {badge.icon}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="relative mt-7 border-t border-royal/15 pt-5 text-center">
+                    <h3 className="font-serif text-2xl font-bold text-royal">{badge.role}</h3>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.24em] text-rust">{badge.title}</p>
+                  </div>
                 </article>
               ))}
             </div>
