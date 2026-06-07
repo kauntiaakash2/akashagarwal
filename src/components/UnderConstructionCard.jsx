@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const profileImageUrl =
-  "/assets/profile.png";
+const profileImageUrl = "assets/profile.png";
 
 const Card = () => {
   return (
