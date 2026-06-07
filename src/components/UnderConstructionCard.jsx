@@ -9,7 +9,7 @@ const Card = () => {
     <StyledWrapper>
       <div className="card" role="status" aria-live="polite">
         <div className="imge">
-          <img className="Usericon" src={profileImageUrl} alt="Akash Agarwal profile" />
+          <img className="Usericon" src={assets/profile.png} alt="Akash Agarwal profile" />
           <p className="UserName">Akash Agarwal</p>
           <p className="Id">@kauntiaakash2</p>
         </div>
