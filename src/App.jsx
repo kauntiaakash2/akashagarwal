@@ -1,6 +1,6 @@
 import React from "react";
 import profilePortrait from "../assets/profile.png";
-import { AsciiArt } from "./components/ui/ascii-art.jsx";
+import { PortfolioLoadingScreen } from "./components/PortfolioLoadingScreen.jsx";
 
 const navItems = ["Home", "About", "Experience", "Projects", "Badges", "Contact"];
 
@@ -106,32 +106,6 @@ const socialLinks = [
   { label: "Codeforces", href: "https://codeforces.com/profile/kauntiaakash2" },
 ];
 
-function LoadingPage() {
-  return (
-    <section className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center overflow-hidden bg-black text-matrix" aria-label="Loading portfolio">
-      <AsciiArt
-        src={profilePortrait}
-        resolution={96}
-        color="#00ff00"
-        animationStyle="matrix"
-        inverted
-        animateOnView={false}
-        className="absolute inset-0 h-full w-full opacity-70"
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,90,0.08),rgba(0,0,0,0.66)_52%,rgba(0,0,0,0.92)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,90,0.08)_1px,transparent_1px)] bg-[length:100%_4px] opacity-25" />
-      <div className="relative z-10 mx-5 max-w-2xl border border-matrix/50 bg-black/70 p-6 text-center shadow-[0_0_60px_rgba(0,255,0,0.22)] backdrop-blur-sm sm:p-8">
-        <p className="text-xs font-black uppercase tracking-[0.45em] text-matrix/80">Akash OS</p>
-        <h2 className="mt-4 font-serif text-4xl font-black uppercase tracking-[-0.04em] text-white sm:text-6xl">Loading Portfolio</h2>
-        <p className="mt-4 text-sm font-bold uppercase tracking-[0.28em] text-matrix/85">Rendering ASCII matrix background</p>
-        <div className="mt-7 h-2 overflow-hidden border border-matrix/60 bg-matrix/10">
-          <div className="h-full w-2/3 animate-[loading-scan_1.25s_ease-in-out_infinite] bg-matrix shadow-[0_0_24px_rgba(0,255,0,0.8)]" />
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function PortraitCard() {
   return (
     <figure className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-royal/10 bg-white shadow-editorial">
@@ -174,11 +148,6 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const loadingTimer = window.setTimeout(() => setIsLoading(false), 2600);
-    return () => window.clearTimeout(loadingTimer);
-  }, []);
-
-  React.useEffect(() => {
     const storedTheme = window.localStorage.getItem("theme");
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -211,7 +180,7 @@ function App() {
   };
 
   if (isLoading) {
-    return <LoadingPage />;
+    return <PortfolioLoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
   }
 
   return (
