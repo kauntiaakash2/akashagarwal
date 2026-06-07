@@ -1,5 +1,6 @@
 import React from "react";
 import profilePortrait from "../assets/profile.png";
+import { AsciiArt } from "./components/ui/ascii-art.jsx";
 
 const navItems = ["Home", "About", "Experience", "Projects", "Badges", "Contact"];
 
@@ -105,152 +106,29 @@ const socialLinks = [
   { label: "Codeforces", href: "https://codeforces.com/profile/kauntiaakash2" },
 ];
 
-const keyboardRows = [
-  ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Back"],
-  ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
-  ["Caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"],
-  ["Shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "Shift"],
-  ["Ctrl", "Alt", "Space", "Alt", "Ctrl"],
-];
-
-const loadingSteps = [
-  { type: "command", prompt: "garage@portfolio:~$", text: "sudo su Akash Agarwal" },
-  { type: "output", text: "[sudo] password for Akash:" },
-  { type: "password", prompt: "password:", text: "Welcome to the Garage Builder" },
-  { type: "output", text: "Access granted. Opening the workshop..." },
-];
-
-const getKeyLabel = (character) => {
-  if (!character) return "";
-  if (character === " ") return "Space";
-  return character.toUpperCase();
-};
-
-function LoadingScreen({ onComplete }) {
-  const [stepIndex, setStepIndex] = React.useState(0);
-  const [typedText, setTypedText] = React.useState("");
-  const [activeKey, setActiveKey] = React.useState("");
-
-  React.useEffect(() => {
-    const currentStep = loadingSteps[stepIndex];
-
-    if (!currentStep) {
-      const completeTimer = window.setTimeout(onComplete, 650);
-      return () => window.clearTimeout(completeTimer);
-    }
-
-    if (currentStep.type === "output") {
-      setActiveKey("");
-      const outputTimer = window.setTimeout(() => {
-        setTypedText("");
-        setStepIndex((current) => current + 1);
-      }, 850);
-      return () => window.clearTimeout(outputTimer);
-    }
-
-    if (typedText.length < currentStep.text.length) {
-      const nextCharacter = currentStep.text[typedText.length];
-      const typingTimer = window.setTimeout(() => {
-        setTypedText((current) => current + nextCharacter);
-        setActiveKey(getKeyLabel(nextCharacter));
-      }, currentStep.type === "password" ? 62 : 52);
-      return () => window.clearTimeout(typingTimer);
-    }
-
-    setActiveKey("Enter");
-    const nextStepTimer = window.setTimeout(() => {
-      setTypedText("");
-      setStepIndex((current) => current + 1);
-    }, 650);
-    return () => window.clearTimeout(nextStepTimer);
-  }, [onComplete, stepIndex, typedText]);
-
-  const completedSteps = loadingSteps.slice(0, stepIndex);
-  const currentStep = loadingSteps[stepIndex];
-  const displayText = currentStep?.type === "password" ? "•".repeat(typedText.length) : typedText;
-
+function LoadingPage() {
   return (
-    <div className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center overflow-hidden bg-[#05070d] px-4 py-8 text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(192,86,33,0.24),transparent_28%),radial-gradient(circle_at_80%_10%,rgba(79,224,202,0.16),transparent_30%),linear-gradient(135deg,rgba(10,42,94,0.35),rgba(5,7,13,0.95))]" />
-      <div className="absolute inset-0 opacity-[0.09] [background-image:linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] [background-size:42px_42px]" />
-
-      <section className="relative grid w-full max-w-6xl gap-8 rounded-[2rem] border border-white/10 bg-white/[0.06] p-5 shadow-[0_35px_120px_rgba(0,0,0,0.55)] backdrop-blur-2xl md:p-8 lg:grid-cols-[0.9fr_1.1fr]" aria-label="Portfolio loading screen">
-        <div className="flex flex-col justify-between rounded-[1.5rem] border border-white/10 bg-black/55 p-5 font-mono shadow-2xl">
-          <div>
-            <div className="mb-5 flex items-center gap-2 border-b border-white/10 pb-4">
-              <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-              <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-              <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-              <span className="ml-3 text-xs uppercase tracking-[0.25em] text-white/45">garage shell</span>
-            </div>
-
-            <div className="min-h-64 space-y-4 text-sm leading-7 sm:text-base">
-              {completedSteps.map((step, index) => (
-                <p key={`${step.text}-${index}`} className={step.type === "output" ? "text-emerald-300" : "text-white"}>
-                  {step.prompt ? <span className="mr-2 text-[#f4a261]">{step.prompt}</span> : null}
-                  <span>{step.type === "password" ? "•".repeat(step.text.length) : step.text}</span>
-                </p>
-              ))}
-
-              {currentStep ? (
-                <p className={currentStep.type === "output" ? "text-emerald-300" : "text-white"}>
-                  {currentStep.prompt ? <span className="mr-2 text-[#f4a261]">{currentStep.prompt}</span> : null}
-                  <span>{currentStep.type === "output" ? currentStep.text : displayText}</span>
-                  {currentStep.type !== "output" ? <span className="ml-1 inline-block h-5 w-2 translate-y-1 animate-pulse bg-[#4fe0ca]" /> : null}
-                </p>
-              ) : (
-                <p className="text-emerald-300">Launching portfolio...</p>
-              )}
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-2xl border border-[#4fe0ca]/30 bg-[#4fe0ca]/10 p-4">
-            <p className="text-xs uppercase tracking-[0.28em] text-[#4fe0ca]">Password phrase</p>
-            <p className="mt-2 font-serif text-2xl text-white">Welcome to the Garage Builder</p>
-          </div>
+    <section className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center overflow-hidden bg-black text-matrix" aria-label="Loading portfolio">
+      <AsciiArt
+        src={profilePortrait}
+        resolution={96}
+        color="#00ff00"
+        animationStyle="matrix"
+        inverted
+        animateOnView={false}
+        className="absolute inset-0 h-full w-full opacity-70"
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,90,0.08),rgba(0,0,0,0.66)_52%,rgba(0,0,0,0.92)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,90,0.08)_1px,transparent_1px)] bg-[length:100%_4px] opacity-25" />
+      <div className="relative z-10 mx-5 max-w-2xl border border-matrix/50 bg-black/70 p-6 text-center shadow-[0_0_60px_rgba(0,255,0,0.22)] backdrop-blur-sm sm:p-8">
+        <p className="text-xs font-black uppercase tracking-[0.45em] text-matrix/80">Akash OS</p>
+        <h2 className="mt-4 font-serif text-4xl font-black uppercase tracking-[-0.04em] text-white sm:text-6xl">Loading Portfolio</h2>
+        <p className="mt-4 text-sm font-bold uppercase tracking-[0.28em] text-matrix/85">Rendering ASCII matrix background</p>
+        <div className="mt-7 h-2 overflow-hidden border border-matrix/60 bg-matrix/10">
+          <div className="h-full w-2/3 animate-[loading-scan_1.25s_ease-in-out_infinite] bg-matrix shadow-[0_0_24px_rgba(0,255,0,0.8)]" />
         </div>
-
-        <div className="flex flex-col justify-center gap-6">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#f4a261]">Booting portfolio</p>
-            <h2 className="mt-4 font-serif text-5xl font-black uppercase leading-none tracking-[-0.06em] sm:text-7xl">
-              Akash Garage
-            </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">
-              A keyboard-driven intro signs in as Akash Agarwal, unlocks the garage, and rolls into the portfolio.
-            </p>
-          </div>
-
-          <div className="rounded-[1.6rem] border border-white/10 bg-[#111827]/90 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_60px_rgba(0,0,0,0.35)] sm:p-5">
-            <div className="mb-4 rounded-2xl border border-white/10 bg-black/35 px-4 py-3 font-mono text-sm text-[#4fe0ca]">
-              Preview key: <span className="text-white">{activeKey || "waiting"}</span>
-            </div>
-            <div className="overflow-x-auto pb-2">
-              <div className="min-w-max space-y-2">
-                {keyboardRows.map((row, rowIndex) => (
-                <div key={rowIndex} className="flex justify-center gap-1.5 sm:gap-2">
-                  {row.map((key, keyIndex) => {
-                    const isWide = ["Back", "Tab", "Caps", "Enter", "Shift", "Space"].includes(key);
-                    const isActive = activeKey === key;
-                    return (
-                      <span
-                        key={`${key}-${keyIndex}`}
-                        className={`flex h-9 items-center justify-center rounded-lg border text-[0.62rem] font-bold uppercase tracking-[0.08em] transition duration-150 sm:h-11 sm:text-xs ${
-                          isWide ? (key === "Space" ? "w-32 sm:w-56" : "w-14 sm:w-20") : "w-8 sm:w-11"
-                        } ${isActive ? "-translate-y-1 border-[#4fe0ca] bg-[#4fe0ca] text-[#07111f] shadow-[0_10px_28px_rgba(79,224,202,0.45)]" : "border-white/10 bg-white/[0.08] text-white/70 shadow-[0_5px_0_rgba(0,0,0,0.35)]"}`}
-                      >
-                        {key}
-                      </span>
-                    );
-                  })}
-                </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 
@@ -296,6 +174,11 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
+    const loadingTimer = window.setTimeout(() => setIsLoading(false), 2600);
+    return () => window.clearTimeout(loadingTimer);
+  }, []);
+
+  React.useEffect(() => {
     const storedTheme = window.localStorage.getItem("theme");
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -320,10 +203,6 @@ function App() {
     return () => mediaQuery.removeEventListener("change", handlePreferenceChange);
   }, []);
 
-  const handleLoadingComplete = React.useCallback(() => {
-    setIsLoading(false);
-  }, []);
-
   const toggleTheme = () => {
     const nextTheme = theme === "dark" ? "light" : "dark";
     document.documentElement.classList.toggle("dark", nextTheme === "dark");
@@ -331,11 +210,13 @@ function App() {
     setTheme(nextTheme);
   };
 
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
   return (
-    <>
-      {isLoading ? <LoadingScreen onComplete={handleLoadingComplete} /> : null}
-      <div className={`min-h-screen bg-cream text-ink transition-opacity duration-700 ${isLoading ? "pointer-events-none opacity-0" : "opacity-100"}`} aria-hidden={isLoading}>
-        <header className="fixed inset-x-0 top-0 z-50 border-b border-royal/10 bg-cream/90 backdrop-blur-xl">
+    <div className="min-h-screen bg-cream text-ink">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-royal/10 bg-cream/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
           <a href="#home" className="font-serif text-2xl font-bold tracking-tight text-royal">
             Aa
@@ -362,9 +243,9 @@ function App() {
             </a>
           </div>
         </div>
-        </header>
+      </header>
 
-        <main id="home" className="pt-24">
+      <main id="home" className="pt-24">
         <section className="bg-cream px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
           <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
             <div>
@@ -480,7 +361,7 @@ function App() {
                     <p className="mt-2 text-sm font-bold uppercase tracking-[0.22em] text-rust">{experience.organization}</p>
                     <p className="mt-6 text-lg leading-8 text-ink/72">{experience.detail}</p>
                   </article>
-                  ))}
+                ))}
               </div>
             </div>
           </div>
@@ -508,9 +389,9 @@ function App() {
             </div>
           </div>
         </section>
-        </main>
+      </main>
 
-        <footer id="contact" className="overflow-hidden bg-royal px-5 py-16 text-white sm:px-8 lg:px-10">
+      <footer id="contact" className="overflow-hidden bg-royal px-5 py-16 text-white sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-5">
             {socialLinks.map((link) => (
@@ -523,9 +404,8 @@ function App() {
             Akash Agarwal
           </p>
         </div>
-        </footer>
-      </div>
-    </>
+      </footer>
+    </div>
   );
 }
 
