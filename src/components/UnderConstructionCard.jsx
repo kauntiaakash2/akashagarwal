@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const profileImageUrl = "https://github.com/kauntiaakash2/akashagarwal/blob/main/assets/profile.png";
+const profileImageUrl = "https://raw.githubusercontent.com/kauntiaakash2/akashagarwal/main/assets/profile.png";
 
 const Card = () => {
   return (
