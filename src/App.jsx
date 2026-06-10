@@ -6,9 +6,9 @@ import UnderConstructionCard from "./components/UnderConstructionCard.jsx";
 const navItems = ["Home", "About", "Experience", "Projects", "Badges", "Contact"];
 
 const stats = [
-  { value: "8.71", label: "CGPA" },
+  { value: "8.74", label: "CGPA" },
   { value: "200+", label: "DSA Problems Solved" },
-  { value: "2-Star", label: "CodeChef Rating" },
+  { value: "3-Star", label: "CodeChef Rating" },
   { value: "SSoC'25", label: "Open Source Contributor" },
 ];
 
