@@ -5,7 +5,8 @@
 ![Vite](https://img.shields.io/badge/Vite-5.4.11-646cff.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Deploy](https://img.shields.io/badge/deploy-vercel-black.svg)
-
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![React](https://img.shields.io/badge/React-18.3.1-61dafb.svg?logo=react)
 A fast, responsive personal portfolio for **Akash Agarwal**. The site presents full-stack projects, AI/ML experience, competitive programming highlights, and contact links through an editorial, magazine-inspired interface.
 
 ---
