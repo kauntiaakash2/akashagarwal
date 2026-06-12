@@ -1,7 +1,5 @@
 # ✨ Akash Agarwal — Editorial Portfolio
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![React](https://img.shields.io/badge/React-18.3.1-61dafb.svg)
 ![Vite](https://img.shields.io/badge/Vite-5.4.11-646cff.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Deploy](https://img.shields.io/badge/deploy-vercel-black.svg)
