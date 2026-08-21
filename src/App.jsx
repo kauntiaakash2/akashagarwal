@@ -208,7 +208,7 @@ function App() {
             >
               {theme === "dark" ? "Light Mode" : "Dark Mode"}
             </button>
-            <a href="https://drive.google.com/file/d/1Omf8lkj2MndUt0o8TqtI1dP7dURLlfaH/view?usp=sharing" target="_blank" 
+            <a href="https://drive.google.com/file/d/1OaEInUieYnAmy3KaBcIq_i1a9WWbVTHG/view?usp=sharing" target="_blank" 
     rel="noopener noreferrer" className="rounded-full border border-rust px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-rust transition hover:bg-rust hover:text-white">
               Resume
             </a>
