@@ -1,14 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html
+  lang="en"
+  data-theme="lime"
+  style="background: #141414; color-scheme: dark"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f0f0f0" />
-    <meta name="description" content="Akash Agarwal — CSE student at KIIT specializing in AI/ML. Full-stack applications, backend systems, developer tools, and LLM evaluation." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" href="/fonts/big-shoulders-900.woff2" as="font" type="font/woff2" crossorigin />
-    <title>Akash Agarwal — Software Engineering & AI/ML</title>
-    <script>try { document.documentElement.dataset.theme = localStorage.getItem('villo-theme') || 'light' } catch {}</script>
+    <meta name="theme-color" content="#141414" />
+    <meta
+      name="description"
+      content="Akash Agarwal — CSE student at KIIT specializing in AI/ML. Full-stack applications, backend systems, developer tools, and LLM evaluation."
+    />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link
+      rel="preload"
+      href="/fonts/big-shoulders-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <title>Akash Agarwal</title>
+    <script>
+      try {
+        const saved = localStorage.getItem("villo-theme");
+        document.documentElement.dataset.theme =
+          saved === "blue" || saved === "dark" ? "blue" : "lime";
+      } catch {}
+    </script>
   </head>
-  <body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
