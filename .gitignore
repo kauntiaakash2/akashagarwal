@@ -1,5 +1,14 @@
 node_modules/
 dist/
-.env
-.env.local
-.DS_Store
+.playwright-cli/
+output/
+*.local
+*.tsbuildinfo
+
+# Local reference material and private Search Console exports.
+/Screen Recording *.mp4
+/kauntiaakash2.tech-Performance-on-Search-*.zip
+/kauntiaakash2.tech-Coverage-*.zip
+.vercel
+.env*
+/Akash_Agarwal_Detailed_Profile.md

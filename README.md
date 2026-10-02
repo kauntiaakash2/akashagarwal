@@ -1,186 +1,54 @@
-# ✨ Akash Agarwal — Editorial Portfolio
+# Villo-inspired portfolio
 
-![Vite](https://img.shields.io/badge/Vite-5.4.11-646cff.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Deploy](https://img.shields.io/badge/deploy-vercel-black.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![React](https://img.shields.io/badge/React-18.3.1-61dafb.svg?logo=react)
-A fast, responsive personal portfolio for **Akash Agarwal**. The site presents full-stack projects, AI/ML experience, competitive programming highlights, and contact links through an editorial, magazine-inspired interface.
+A responsive local implementation of the [Villo Framer template](https://www.framer.com/marketplace/templates/villo/), built with React, TypeScript, and Vite.
 
----
+## Run
 
-## 📚 Table of Contents
-
-- [About](#-about)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Available Scripts](#-available-scripts)
-- [Deployment](#-deployment)
-- [Customization Guide](#-customization-guide)
-- [Contributing](#-contributing)
-- [Credits](#-credits)
-
----
-
-## 🧾 About
-
-This repository contains the source code for Akash Agarwal's portfolio website. It is built as a Vite + React single-page application and styled with Tailwind CSS.
-
-The visual system intentionally avoids generic portfolio templates and uses:
-
-- strong serif-led typographic hierarchy,
-- generous whitespace,
-- responsive card-based sections,
-- a light/dark theme toggle,
-- and a high-contrast editorial palette: **Cream (`#FDFBF7`)**, **Royal Blue (`#0A2A5E`)**, **Rust (`#C05621`)**, and **Ink (`#151515`)**.
-
----
-
-## 🌟 Features
-
-- **Editorial landing page** with a bold hero section and portrait card.
-- **About & stats section** highlighting academics, DSA practice, ratings, and open-source involvement.
-- **Selected projects showcase** with live demo and GitHub links.
-- **Experience section** for internships, leadership, and shipped work.
-- **Technical arsenal accordion** for grouped skills.
-- **Dark mode support** using `localStorage` and system preference detection.
-- **Responsive layout** optimized for mobile, tablet, and desktop screens.
-- **Vercel-ready build** powered by Vite.
-
----
-
-## 🛠 Tech Stack
-
-| Area | Technology |
-|------|------------|
-| Framework | React 18 |
-| Build Tool | Vite 5 |
-| Styling | Tailwind CSS 3 |
-| Fonts | Google Fonts: Playfair Display + Inter |
-| Deployment | Vercel |
-| Package Manager | npm |
-
----
-
-## 🗂 Project Structure
-
-```text
-.
-├── assets/              # Images and static visual assets
-├── src/
-│   ├── App.jsx          # Main portfolio layout and content data
-│   ├── index.css        # Tailwind layers, base styles, and dark-mode overrides
-│   └── main.jsx         # React entry point
-├── index.html           # Vite HTML shell
-├── package.json         # Scripts and dependencies
-├── tailwind.config.js   # Tailwind theme tokens
-├── postcss.config.js    # PostCSS/Tailwind pipeline
-└── vite.config.js       # Vite configuration
+```sh
+npm ci
+npm run dev -- --port 4200
+npm run build
+npm run preview -- --port 4201
 ```
 
----
+Open http://127.0.0.1:4200 for development or http://127.0.0.1:4201 for the production preview. npm uses `package-lock.json`; `npm run build` checks TypeScript and creates the deployable site in `dist/`. The clean install and build were verified with Node.js 24. No environment variables or backend service are required.
 
-## 🚀 Getting Started
+## Content
 
-### Prerequisites
+The portfolio content is based on `Akash_Agarwal_Detailed_Profile.md` (September 2026) and centralized in `src/content.ts`. Edit that file to update the profile, project details and links, experience, education, tools, statistics, and skills. The name and description in `index.html` provide static search metadata.
 
-Install these tools before running the project locally:
+The existing four-card gallery highlights CodeFlowViz 2.0, FinVerify AI, ReSlot, and Smart Contract Verification using LLM. The AlgoZenith platform is represented under the chapter experience with its website link. No additional sections or project categories were introduced.
 
-- [Node.js](https://nodejs.org/) 18.x or newer
-- npm
-- Git
+The contact address is `akashkauntia2006@gmail.com`, supplied by Akash. The source provides no résumé or authored articles, so neither is displayed. GitHub, LinkedIn, and email are displayed in About; additional social profiles appear in the footer. The contact form validates name, email, and message, then opens a prefilled mailto draft directly when Send is pressed. The visitor sends the email from their email app; there is no sending backend. A retry link is shown if the app does not open.
 
-### Installation
+The site retains its keyboard-accessible navigation, project views, saved dark-blue/dark-lime accent preference, reduced-motion support, and locally hosted assets. No Framer service is needed to run the app.
 
-1. Clone the repository:
+## Reference assets
 
-   ```bash
-   git clone https://github.com/kauntiaakash2/akashagarwal.git
-   ```
+The original abstract project artwork from the Villo preview by CocoBasic is retained as decorative imagery, not as project screenshots or logos. Akash’s portrait is served as responsive 480px and 960px WebP images in `public/images/`, framed within the original oval. The full-resolution source remains recoverable from Git history and is not shipped with the site. Visual reference: https://villo.framer.website/.
 
-2. Move into the project directory:
+Fonts: Big Shoulders and DM Sans from Google Fonts (SIL Open Font License). Font license text is included under `public/fonts/`.
 
-   ```bash
-   cd akashagarwal
-   ```
+## Recording-based interactions
 
-3. Install dependencies:
+The local screen recording is the primary reference for the fixed header, compact navigation disclosure, letter-by-letter titles, section transitions, project hover labels, related projects, and scrolling social footer. The blue palette, Akash signature, supplied portrait, real content, and original assets are retained.
 
-   ```bash
-   npm install
-   ```
+Section views use static-host-friendly hashes (`#/about`, `#/projects`, `#/experience`, `#/education`, `#/contact`). Project details use `#/projects/<id>` and support direct links and browser Back/Forward. Unknown project IDs and paths show a not-found view. Existing anchors such as `#about` and `#contact` still navigate within the complete home page. `src/ReferenceUI.tsx` contains the shared navigation, animated text, and project card; `src/usePortfolioView.ts` handles hash navigation, and `src/PortfolioSections.tsx` contains the existing content sections. Content stays centralized in `src/content.ts`.
 
-4. Start the development server:
+The menu closes on Escape, outside click, link selection, or keyboard focus leaving it. View headings receive focus on navigation. Mobile project labels remain visible without hover. Operating-system reduced-motion preferences disable reveals and present static social links. The recording only demonstrates desktop behavior, so the existing responsive layout is retained and adapted for these interactions. No dependencies were added.
 
-   ```bash
-   npm run dev
-   ```
+The theme switch keeps the dark background in both positions: blue (`#5289ff`) or lime (`#E0F11F`). New visitors start with lime; saved light preferences migrate to lime and saved dark preferences retain blue. The choice is applied before rendering and persists across visits.
 
-5. Open the local URL shown in your terminal. By default, Vite serves the app at:
+## Static deployment and security
 
-   ```text
-   http://localhost:5173
-   ```
+This is a Vite single-page app. Its real section and project routes use hashes on `/`, so production hosting does not need a catch-all rewrite for them. Deploy `dist/` at `https://kauntiaakash2.tech/`. Preserve the existing HTTP-to-HTTPS and `www`-to-non-`www` redirects. Serve `404.html` with an actual HTTP 404 status for unknown pathnames; do not rewrite all paths to `index.html`. Vite's development and preview servers instead serve `index.html` with HTTP 200 for unknown paths, where the React not-found view handles the display. No hosting provider is configured in this repository, so its 404 and redirect rules must be set when the host is chosen.
 
----
+Configure security headers at that host: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, and `Permissions-Policy: camera=(), microphone=(), geolocation=()`. Enable HSTS only on the final HTTPS deployment. Test a Content Security Policy against the existing early theme script and React's inline styles before enforcing it; a strict inline-script/style ban would break the current site. No third-party scripts or public environment variables are required.
 
-## 📜 Available Scripts
+The supplied full-resolution portrait remains in Git history. Visitors receive only 480px or 960px WebP derivatives, selected by `srcset`; the hero loads eagerly and the hidden hero image is lazy on other views. The favicon has also been resized for web delivery.
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Starts the Vite development server on `0.0.0.0`. |
-| `npm run build` | Builds the production bundle into `dist/`. |
-| `npm run preview` | Serves the production build locally for review. |
+## Search metadata and migration
 
----
+The crawlable page is `/`; hash views are navigation states and are intentionally absent from the one-URL sitemap. `index.html` contains the production canonical, social preview metadata, and Person/WebSite/ProfilePage structured data. The branded 1200×630 social image is `public/images/og-image.png`. The static 404 page is marked `noindex`; the production host must serve it with HTTP 404 rather than a successful SPA fallback.
 
-## 📦 Deployment
-
-The app is suitable for Vercel deployment with the default Vite settings:
-
-- **Build command:** `npm run build`
-- **Output directory:** `dist`
-- **Install command:** `npm install`
-
-If GitHub Pages is also configured, keep any redirect-only `gh-pages` branch separate from `main` so the application source is not overwritten.
-
----
-
-## 🎨 Customization Guide
-
-Most portfolio content can be updated from `src/App.jsx`:
-
-- `navItems` controls the header navigation.
-- `stats` controls the metric cards in the About section.
-- `projects` controls the project cards, GitHub links, and live demo links.
-- `experiences` controls the Work Experience cards.
-- `skillGroups` controls the Technical Arsenal accordion.
-- `socialLinks` controls the footer links.
-
-Theme tokens such as colors, font stacks, and shadows live in `tailwind.config.js`. Global base styles and dark-mode overrides live in `src/index.css`.
-
----
-
-## 🧩 Contributing
-
-Contributions, issues, and feature requests are welcome.
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes with a clear message.
-4. Open a pull request with a concise summary and screenshots when the UI changes.
-
-Useful links:
-
-- Issues: <https://github.com/kauntiaakash2/akashagarwal/issues>
-- Pull requests: <https://github.com/kauntiaakash2/akashagarwal/pulls>
-
----
-
-## 🤝 Credits
-
-Built and maintained by **Akash Agarwal**.
-
-You are welcome to fork or reference this codebase for learning and portfolio inspiration. If you reuse the structure or significant parts of the implementation, please provide attribution back to this repository.
+The read-only Search Console export and live-site URL inventory are summarized in [docs/seo-migration.md](docs/seo-migration.md). Check that plan when the new portfolio is deployed; this repository change does not alter the current live site or Search Console.

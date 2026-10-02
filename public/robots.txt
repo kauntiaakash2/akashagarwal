@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kauntiaakash2.tech/sitemap.xml
