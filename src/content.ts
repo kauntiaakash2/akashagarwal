@@ -137,6 +137,8 @@ export const projects: Project[] = [
       "Compare vulnerability predictions under consistent datasets, prompts, output schemas, parsing, and evaluation rules while working within hardware and VRAM constraints.",
     approach:
       "Built a Python pipeline using SmartBugs Curated and SolidiFI. Ollama ran local quantized Qwen, DeepSeek Coder, Code Llama, and Mistral models. Structured predictions, vulnerability categories, latency, and failures were normalized into reproducible JSON/CSV results.",
+    github: "https://github.com/kauntiaakash2/SoliBenched",
+    live: "https://solibenched.vercel.app/",
   },
 ];
 export type ResumeEntry = {
@@ -169,7 +171,7 @@ export const experience: ResumeEntry[] = [
   {
     title: "Project Admin · CodeFlowViz",
     place: "GirlScript Summer of Code",
-    period: "2026",
+    period: "May-Aug 2026",
     text: "Managed and reviewed 19+ pull requests across 22+ issues. Provided technical feedback on contributor submissions and mentored contributors in the shared CodeFlowViz codebase.",
   },
 ];
