@@ -9,3 +9,5 @@ output/
 /Screen Recording *.mp4
 /kauntiaakash2.tech-Performance-on-Search-*.zip
 /kauntiaakash2.tech-Coverage-*.zip
+.vercel
+.env*
