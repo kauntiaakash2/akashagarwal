@@ -14,8 +14,10 @@ export function ContactForm({ recipient, firstName }: { recipient: string; first
 
     // Native validation handles formats and length; also reject whitespace-only fields.
     for (const field of ['name', 'message']) {
-      const input = form.elements.namedItem(field) as HTMLInputElement | HTMLTextAreaElement
-      input.setCustomValidity(input.value.trim() ? '' : 'Please fill out this field.')
+      const input = form.elements.namedItem(field)
+      if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
+        input.setCustomValidity(input.value.trim() ? '' : 'Please fill out this field.')
+      }
     }
     if (!form.reportValidity()) return
 

@@ -4,3 +4,8 @@ dist/
 output/
 *.local
 *.tsbuildinfo
+
+# Local reference material and private Search Console exports.
+/Screen Recording *.mp4
+/kauntiaakash2.tech-Performance-on-Search-*.zip
+/kauntiaakash2.tech-Coverage-*.zip

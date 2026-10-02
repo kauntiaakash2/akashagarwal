@@ -1,6 +1,5 @@
 import {
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
   type CSSProperties,
@@ -8,11 +7,17 @@ import {
 import { ArrowUpRight, X } from "lucide-react";
 import { type Project } from "./content";
 
-export function AnimatedText({ text }: { text: string }) {
+export function AnimatedText({
+  text,
+  screenReaderText = true,
+}: {
+  text: string;
+  screenReaderText?: boolean;
+}) {
   let letterIndex = 0;
   return (
     <>
-      <span className="sr-only">{text}</span>
+      {screenReaderText && <span className="sr-only">{text}</span>}
       <span aria-hidden="true" className="animated-text">
         {text.split(" ").map((word, wordIndex) => (
           <span className="animated-word" key={wordIndex}>
@@ -62,9 +67,11 @@ export function ProjectCard({ project }: { project: Project }) {
 export function Navigation({
   sections,
   active,
+  rootPath = false,
 }: {
   sections: string[];
   active: string;
+  rootPath?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
@@ -124,7 +131,7 @@ export function Navigation({
           return (
             <a
               key={id}
-              href={id === "home" ? "#home" : `#/${id}`}
+              href={`${rootPath ? "/" : ""}${id === "home" ? "#home" : `#/${id}`}`}
               aria-current={active === id ? "page" : undefined}
               onClick={() => {
                 setOpen(false);
@@ -138,33 +145,4 @@ export function Navigation({
       </nav>
     </div>
   );
-}
-
-// Hash views preserve the original anchor URLs and work on static hosting.
-export function usePortfolioView() {
-  const [hash, setHash] = useState(window.location.hash);
-  useEffect(() => {
-    const restoration = history.scrollRestoration;
-    history.scrollRestoration = "manual";
-    const change = () => setHash(window.location.hash);
-    window.addEventListener("hashchange", change);
-    return () => {
-      history.scrollRestoration = restoration;
-      window.removeEventListener("hashchange", change);
-    };
-  }, []);
-  useLayoutEffect(() => {
-    if (hash.startsWith("#/")) {
-      window.scrollTo({ top: 0, behavior: "instant" });
-      document
-        .querySelector<HTMLElement>(".page-heading h1, .project-detail h1")
-        ?.focus({ preventScroll: true });
-    } else if (hash) {
-      const frame = requestAnimationFrame(() =>
-        document.getElementById(hash.slice(1))?.scrollIntoView(),
-      );
-      return () => cancelAnimationFrame(frame);
-    }
-  }, [hash]);
-  return hash.startsWith("#/") ? hash.slice(2).split("/") : ["home"];
 }

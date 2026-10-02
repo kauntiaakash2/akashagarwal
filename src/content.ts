@@ -3,58 +3,69 @@
 export const profile = {
   firstName: "Akash",
   lastName: "Agarwal",
-  title: "Software Engineering · Full-Stack · AI/ML",
   email: "akashkauntia2006@gmail.com",
-  portrait: "/images/portrait.png",
+  portrait: {
+    src: "/images/portrait-960.webp",
+    srcSet: "/images/portrait-480.webp 480w, /images/portrait-960.webp 960w",
+    width: 960,
+    height: 1907,
+  },
   location: "Bhubaneswar, Odisha, India",
   tagline: "Software engineering · Full-stack · AI/ML",
   introduction:
     "I’m Akash Agarwal — a third-year CSE student at KIIT, building full-stack applications, backend systems, and AI/ML tools.",
   about:
-    "I build systems that connect useful interfaces with the engineering behind them  from code execution and financial-data verification to scheduling and LLM evaluation.",
+    "I build systems that connect useful interfaces with the engineering behind them — from code execution and financial-data verification to scheduling and LLM evaluation.",
   biography:
     "I’m pursuing a B.Tech in Computer Science & Engineering with an AI/ML specialization at KIIT. My interests include developer tools, optimization, program analysis, and concurrent backend systems. Alongside development, I’m active in open source and competitive programming, with a CodeChef 3-Star peak rating of 1614.",
-  menuBio: "CSE student · Software engineering & AI/ML",
   contactIntro:
     "For engineering opportunities, project collaborations, or a conversation about my work, send me a message.",
-  contactUrl: "https://www.linkedin.com/in/kauntiakash2/",
-  socials: [
-    { label: "GitHub", url: "https://github.com/kauntiaakash2" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/kauntiakash2/" },
-    { label: "Email", url: "akashkauntia2006@gmail.com" },
-  ],
 };
+const socialUrls = {
+  github: "https://github.com/kauntiaakash2",
+  linkedin: "https://www.linkedin.com/in/kauntiakash2/",
+  youtube: "https://www.youtube.com/@kauntiakash2",
+  codeforces: "https://codeforces.com/profile/kauntiaakash2",
+  codechef: "https://www.codechef.com/users/kauntiakash2",
+  leetcode: "https://leetcode.com/u/kauntiaakash2/",
+};
+
+export const aboutSocials = [
+  { label: "GitHub", url: socialUrls.github },
+  { label: "LinkedIn", url: socialUrls.linkedin },
+  { label: "Email", url: `mailto:${profile.email}` },
+];
 // Footer labels are abbreviated; full names remain available to assistive technology.
 export const footerSocials = [
   {
     label: "GitHub",
     shortLabel: "GH",
-    url: profile.socials.find((link) => link.label === "GitHub")!.url,
+    url: socialUrls.github,
   },
   {
     label: "LinkedIn",
     shortLabel: "LNKD",
-    url: profile.socials.find((link) => link.label === "LinkedIn")!.url,
+    url: socialUrls.linkedin,
   },
   {
     label: "YouTube",
     shortLabel: "YT",
-    url: "https://www.youtube.com/@kauntiakash2",
+    url: socialUrls.youtube,
   },
   {
     label: "Codeforces",
     shortLabel: "CF",
-    url: "https://codeforces.com/profile/kauntiaakash2",
+    url: socialUrls.codeforces,
   },
   {
     label: "CodeChef",
     shortLabel: "CC",
-    url: "https://www.codechef.com/users/kauntiakash2",
+    url: socialUrls.codechef,
   },
   {
     label: "LeetCode",
     shortLabel: "LC",
-    url: "https://leetcode.com/u/kauntiaakash2/",
+    url: socialUrls.leetcode,
   },
 ];
 
@@ -201,12 +212,3 @@ export const skills = [
   { name: "SQL", description: "PostgreSQL & MySQL" },
   { name: "Docker", description: "Git & GitHub Actions" },
 ];
-export type Article = {
-  id: string;
-  title: string;
-  date: string;
-  category: string;
-  paragraphs: string[];
-};
-// No authored articles are supplied; hide the section and navigation entry until populated.
-export const articles: Article[] = [];
